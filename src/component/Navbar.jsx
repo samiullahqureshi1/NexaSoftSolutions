@@ -4,6 +4,8 @@ import { HiOutlineMail } from "react-icons/hi";
 import { FiPhoneCall } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
+/* ================= DATA ================= */
+
 const serviceLinks = [
   [
     "Web Development",
@@ -46,13 +48,16 @@ const gccGiants = [
   "OHANA",
 ];
 
+/* ================= DROPDOWN ================= */
+
 const ServicesDropdown = () => (
   <div className="absolute top-full left-0 w-full pt-4 z-50">
     <div className="bg-[#0a0a0a] border border-white/10 rounded-[2rem] p-10 shadow-[0_40px_80px_rgba(0,0,0,0.9)] flex flex-col lg:flex-row gap-12 animate-in fade-in slide-in-from-top-2 duration-300">
-      {/* LEFT: Service Columns */}
+
+      {/* LEFT SERVICES */}
       <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-x-12">
         {serviceLinks.map((column, colIdx) => (
-          <div key={colIdx} className="space-y-0.5">
+          <div key={colIdx} className="space-y-1">
             {column.map((service) => (
               <div
                 key={service}
@@ -60,13 +65,13 @@ const ServicesDropdown = () => (
               >
                 <div className="flex items-center gap-3">
                   <span className="w-1.5 h-1.5 rounded-full bg-purple-600 shadow-[0_0_8px_#a855f7]" />
-                  <span className="text-gray-300 group-hover:text-white font-medium text-[13px] tracking-wide transition-colors">
+                  <span className="text-[14px] font-medium tracking-wide text-gray-300 group-hover:text-white transition-colors">
                     {service}
                   </span>
                 </div>
                 <MdSubdirectoryArrowRight
-                  className="text-gray-600 group-hover:text-purple-500 transition-transform group-hover:translate-x-1"
                   size={18}
+                  className="text-gray-600 group-hover:text-purple-500 transition-transform group-hover:translate-x-1"
                 />
               </div>
             ))}
@@ -74,9 +79,9 @@ const ServicesDropdown = () => (
         ))}
       </div>
 
-      {/* RIGHT: GCC Giants Grid */}
+      {/* RIGHT BRAND GRID */}
       <div className="lg:w-[360px]">
-        <h3 className="text-2xl font-bold text-gray-400 mb-6 leading-tight uppercase tracking-tight">
+        <h3 className="text-[20px] font-bold tracking-tight text-gray-400 mb-6 uppercase leading-tight">
           5-Star Rated,
           <br />
           <span className="text-white">Works with GCC Giants</span>
@@ -88,7 +93,7 @@ const ServicesDropdown = () => (
               key={i}
               className="aspect-square border-r border-b border-white/10 flex items-center justify-center p-2 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer bg-white/[0.02] hover:bg-white/[0.05]"
             >
-              <span className="text-[8px] font-black text-center text-white leading-tight uppercase tracking-tighter">
+              <span className="text-[8px] font-black text-center uppercase tracking-tighter text-white">
                 {brand}
               </span>
             </div>
@@ -99,24 +104,26 @@ const ServicesDropdown = () => (
   </div>
 );
 
+/* ================= NAVBAR ================= */
+
 const Navbar = () => {
   const [isServicesHovered, setIsServicesHovered] = useState(false);
 
   return (
-    <header className="fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-[90%] max-w-6xl">
+    <header className="fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-[90%] max-w-6xl font-primary">
       <nav
         className="relative flex items-center justify-between px-6 py-3 rounded-full bg-black/40 backdrop-blur-2xl border border-white/10 shadow-2xl"
         onMouseLeave={() => setIsServicesHovered(false)}
       >
-        {/* Logo */}
-        <div className="flex items-center gap-1 text-2xl tracking-tighter text-white cursor-pointer select-none">
+        {/* LOGO */}
+        <div className="flex items-center gap-1 text-[22px] tracking-tight text-white cursor-pointer select-none font-brand">
           <span className="font-light">digital</span>
-          <span className="font-black text-white">gravity</span>
+          <span className="font-extrabold">gravity</span>
           <div className="w-1.5 h-1.5 rounded-full bg-purple-500 mt-2 ml-0.5" />
         </div>
 
-        {/* Links (Industry Removed) */}
-        <ul className="hidden lg:flex items-center gap-10 text-[11px] uppercase tracking-[0.2em] font-bold text-gray-300">
+        {/* NAV LINKS */}
+        <ul className="hidden lg:flex items-center gap-10 text-[12px] uppercase tracking-[0.12em] font-semibold text-gray-300">
           <li
             className={`py-4 cursor-pointer transition-colors ${
               isServicesHovered
@@ -127,19 +134,21 @@ const Navbar = () => {
           >
             Services
           </li>
-          <li className="hover:text-white transition-colors cursor-pointer">
+
+          <li className="hover:text-white transition-colors">
             <Link to="/case-studies">Our Work</Link>
-          </li>{" "}
-          <li className="hover:text-white transition-colors cursor-pointer">
+          </li>
+
+          <li className="hover:text-white transition-colors">
             <Link to="/about-us">About</Link>
           </li>
-          <li className="hover:text-white transition-colors cursor-pointer">
+
+          <li className="hover:text-white transition-colors">
             <Link to="/blogs">Blog</Link>
-            
           </li>
         </ul>
 
-        {/* Action Icons & Button */}
+        {/* ACTIONS */}
         <div className="flex items-center gap-4">
           <div className="hidden sm:flex items-center gap-2">
             <div className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-purple-600 transition-all cursor-pointer">
@@ -150,12 +159,12 @@ const Navbar = () => {
             </div>
           </div>
 
-          <button className="bg-purple-600 px-7 py-3 rounded-full text-[10px] font-black tracking-[0.1em] uppercase text-white hover:bg-purple-500 transition-all shadow-[0_10px_20px_rgba(168,85,247,0.2)] active:scale-95">
+          <button className="bg-purple-600 px-7 py-3 rounded-full text-[11px] font-extrabold tracking-[0.12em] uppercase text-white hover:bg-purple-500 transition-all shadow-[0_10px_20px_rgba(168,85,247,0.25)] active:scale-95">
             Speak to an expert
           </button>
         </div>
 
-        {/* Services Dropdown */}
+        {/* DROPDOWN */}
         {isServicesHovered && <ServicesDropdown />}
       </nav>
     </header>
