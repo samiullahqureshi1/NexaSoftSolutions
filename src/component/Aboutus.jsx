@@ -6,7 +6,7 @@ import {
   FaLinkedinIn,
   FaYoutube,
   FaWhatsapp,
-  FaVolumeMute, // Added for the video-style mute icon
+  FaVolumeMute,
 } from "react-icons/fa";
 import { HiOutlineMail, HiOutlinePhone } from "react-icons/hi";
 
