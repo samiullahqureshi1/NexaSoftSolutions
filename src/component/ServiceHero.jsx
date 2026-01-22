@@ -11,97 +11,124 @@ const ServiceHero = () => {
   if (!data) return null;
 
   return (
-    <section className="relative min-h-screen bg-[#050505] overflow-hidden">
-      {/* Background Image */}
+    <section className="relative min-h-screen bg-[#050505] flex items-center overflow-hidden">
+      {/* 1. Background Image with Masking */}
       <div className="absolute inset-0">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${data.image})` }}
         />
-        <div className="absolute inset-0 bg-black/70" />
-        <div className="absolute inset-0 bg-gradient-to-tr from-black via-black/60 to-purple-900/30" />
+        {/* Dark overlay to match image contrast */}
+        <div className="absolute inset-0 bg-black/40" />
+        {/* The purple glow from the right */}
+        <div className="absolute inset-0 bg-gradient-to-l from-purple-900/40 via-transparent to-transparent" />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 py-32">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+      {/* 2. Background Grid Effect (Bottom half) */}
+      <div 
+        className="absolute bottom-0 left-0 w-full h-1/3 opacity-20"
+        style={{ backgroundImage: 'linear-gradient(#ffffff10 1px, transparent 1px), linear-gradient(90deg, #ffffff10 1px, transparent 1px)', backgroundSize: '40px 40px' }}
+      />
+
+      <div className="relative z-10 container mx-auto px-6 py-20">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          
           {/* LEFT CONTENT */}
-          <div>
-            {/* Tag */}
-            <div className="flex items-center gap-2 mb-6">
-              <span className="w-2 h-2 rounded-full bg-purple-500" />
-              <span className="text-sm font-medium text-purple-400">
+          <div className="text-left">
+            <div className="flex items-center gap-3 mb-8">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#a855f7] shadow-[0_0_12px_#a855f7]" />
+              <span className="text-sm font-semibold tracking-wider text-white uppercase">
                 {data.tag}
               </span>
             </div>
 
-            {/* Title */}
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-semibold text-white mb-6 leading-tight">
-              {data.title}
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-[1.1]">
+              {data.title.split(' ').map((word, i) => (
+                i >= 3 ? <span key={i} className="block">{word}</span> : word + ' '
+              ))}
             </h1>
 
-            {/* Description */}
-            <p className="text-base md:text-lg text-gray-400 max-w-xl">
+            <p className="text-lg text-gray-300 max-w-xl leading-relaxed opacity-90">
               {data.description}
             </p>
           </div>
 
-          {/* RIGHT FORM */}
-          <div className="bg-black/50 backdrop-blur-xl border border-white/10 rounded-3xl p-8 lg:p-10">
-            <h3 className="text-xl font-semibold text-white mb-6">
-              Have any questions?
-            </h3>
+          {/* RIGHT FORM CONTAINER */}
+          <div className="flex justify-center lg:justify-end">
+            <div className="w-full max-w-[480px] bg-black/30 backdrop-blur-md border border-white/20 rounded-[40px] p-8 md:p-12 shadow-2xl">
+              <h3 className="text-3xl font-medium text-white mb-10">
+                Have any questions?
+              </h3>
 
-            <div className="space-y-4">
-              <input
-                type="text"
-                placeholder="Name*"
-                className="w-full bg-transparent border border-white/10 rounded-full px-5 py-3 text-sm text-white placeholder-gray-400 focus:outline-none focus:border-purple-500"
-              />
-
-              <input
-                type="email"
-                placeholder="Email*"
-                className="w-full bg-transparent border border-white/10 rounded-full px-5 py-3 text-sm text-white placeholder-gray-400 focus:outline-none focus:border-purple-500"
-              />
-
-              <input
-                type="tel"
-                placeholder="Phone No*"
-                className="w-full bg-transparent border border-white/10 rounded-full px-5 py-3 text-sm text-white placeholder-gray-400 focus:outline-none focus:border-purple-500"
-              />
-
-              {/* Budget */}
-              <div className="pt-4">
-                <div className="flex justify-between text-sm text-gray-400 mb-2">
-                  <span>AED 5K</span>
-                  <span>AED 50K+</span>
-                </div>
+              <div className="space-y-6">
+                {/* Inputs */}
                 <input
-                  type="range"
-                  min="5000"
-                  max="50000"
-                  step="5000"
-                  value={budget}
-                  onChange={(e) => setBudget(e.target.value)}
-                  className="w-full accent-purple-600"
+                  type="text"
+                  placeholder="Name*"
+                  className="w-full bg-transparent border border-white/20 rounded-xl px-6 py-4 text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 transition-all"
                 />
-                <p className="mt-2 text-sm text-purple-400">
-                  Selected Budget: AED {budget}
-                </p>
+
+                <input
+                  type="email"
+                  placeholder="Email*"
+                  className="w-full bg-transparent border border-white/20 rounded-xl px-6 py-4 text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 transition-all"
+                />
+
+                {/* Phone Input with Flag Placeholder */}
+                <div className="relative">
+                    <div className="absolute left-4 top-1/2 -translate-y-1/2 flex items-center gap-2 border-r border-white/20 pr-3">
+                        <img src="https://flagcdn.com/w20/ae.png" alt="UAE" className="w-5 h-3 object-cover" />
+                        <span className="text-white text-sm">+971</span>
+                    </div>
+                    <input
+                        type="tel"
+                        placeholder="Phone No*"
+                        className="w-full bg-transparent border border-white/20 rounded-xl pl-24 pr-6 py-4 text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 transition-all"
+                    />
+                </div>
+
+                {/* Budget Slider */}
+                <div className="pt-4">
+                  <div className="flex justify-between text-xs font-bold text-white mb-4 uppercase tracking-widest">
+                    <span>AED 5K</span>
+                    <span>AED 50K</span>
+                  </div>
+                  <div className="relative h-2 bg-gray-600 rounded-full">
+                      {/* Purple active part */}
+                      <div 
+                        className="absolute h-full bg-[#a855f7] rounded-full" 
+                        style={{ width: `${(budget / 50000) * 100}%` }}
+                      />
+                      <input
+                        type="range"
+                        min="5000"
+                        max="50000"
+                        value={budget}
+                        onChange={(e) => setBudget(e.target.value)}
+                        className="absolute w-full h-full opacity-0 cursor-pointer z-10"
+                      />
+                      {/* Visual Thumb */}
+                      <div 
+                        className="absolute top-1/2 -translate-y-1/2 w-5 h-5 bg-white rounded-full border-4 border-purple-600 shadow-lg"
+                        style={{ left: `calc(${(budget / 50000) * 100}% - 10px)` }}
+                      />
+                  </div>
+                </div>
+
+                <textarea
+                  rows="3"
+                  placeholder="Tell us about your project"
+                  className="w-full bg-transparent border border-white/20 rounded-2xl px-6 py-4 text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 resize-none transition-all"
+                />
+
+                {/* Gradient Button */}
+                <button className="w-full group relative overflow-hidden bg-gradient-to-r from-[#5a21b3] to-[#a855f7] py-4 rounded-full text-white font-bold transition-all hover:scale-[1.02] active:scale-95 shadow-lg shadow-purple-900/20">
+                  <span className="relative z-10">Submit</span>
+                </button>
               </div>
-
-              <textarea
-                rows="4"
-                placeholder="Tell us about your project"
-                className="w-full bg-transparent border border-white/10 rounded-2xl px-5 py-3 text-sm text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 resize-none"
-              />
-
-              <button className="w-full bg-purple-600 py-3 rounded-full text-sm font-medium text-white hover:bg-purple-500 transition">
-                Submit
-              </button>
             </div>
           </div>
+
         </div>
       </div>
     </section>
