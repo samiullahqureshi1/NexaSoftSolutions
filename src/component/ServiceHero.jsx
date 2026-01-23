@@ -34,37 +34,37 @@ const ServiceHero = () => {
       title: "Digital Uplift for DIFC",
       desc: "By utilizing our 10+ years of experience, we developed DIFC's portal with a sleek design and seamless UX, enabling quick hassle-free management and operations. As a result, they got 20% higher conversions, 100% more security with Mysql and Azure.",
       image:
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+        "https://cdn.shopify.com/s/files/1/0654/1210/4348/files/difc-website.gif?v=1769150548",
     },
     "ecommerce-development": {
       title: "Global E-retail Transformation",
       desc: "We built a high-performance headless commerce engine for a global fashion brand. This migration resulted in a 40% decrease in page load times and a 15% increase in average order value across GCC markets.",
       image:
-        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+        "https://cdn.shopify.com/s/files/1/0654/1210/4348/files/difc-website.gif?v=1769150548",
     },
     "erp-software": {
       title: "Supply Chain Automation",
       desc: "Custom ERP implementation for a leading logistics provider in Dubai. Integrated real-time tracking and automated inventory management, reducing manual entry errors by 65%.",
       image:
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+        "https://cdn.shopify.com/s/files/1/0654/1210/4348/files/difc-website.gif?v=1769150548",
     },
     "ai-machine-learning": {
       title: "Predictive Analytics for Retail",
       desc: "Developed a Gen-AI recommendation engine that analyzes customer behavior patterns to predict future purchases, driving a 25% uplift in repeat customer rate.",
       image:
-        "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80",
+        "https://cdn.shopify.com/s/files/1/0654/1210/4348/files/difc-website.gif?v=1769150548",
     },
     "cloud-solutions": {
       title: "Azure Enterprise Migration",
       desc: "Seamless cloud migration of legacy infrastructure for a financial institution. Enhanced security protocols and established a 99.99% uptime architecture using multi-region failovers.",
       image:
-        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
+        "https://cdn.shopify.com/s/files/1/0654/1210/4348/files/difc-website.gif?v=1769150548",
     },
     "shopify-store-build-redesign": {
       title: "Luxury Brand Shopify Launch",
       desc: "A complete visual overhaul and Shopify Plus migration for a luxury jewelry brand. Focused on high-fidelity visual storytelling and a conversion-optimized checkout flow.",
       image:
-        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=80",
+        "https://cdn.shopify.com/s/files/1/0654/1210/4348/files/difc-website.gif?v=1769150548",
     },
   };
 
@@ -134,7 +134,11 @@ const ServiceHero = () => {
       color: "#95bf47",
     },
   ];
-
+const stats = [
+  { value: "265+", label: "Clients" },
+  { value: "100+", label: "Custom Apps Delivered" },
+  { value: "10+ ", label: "Years of Experience" },
+];
   return (
     <>
       <section className="relative min-h-screen bg-[#050505] flex items-center overflow-hidden">
@@ -634,6 +638,60 @@ const ServiceHero = () => {
 
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-purple-900/5 blur-[120px] rounded-full pointer-events-none" />
       </section>
+<section 
+  className="relative min-h-[600px] py-24 flex items-center bg-cover bg-center bg-no-repeat"
+  style={{ 
+    backgroundImage: `url('https://cdn.shopify.com/s/files/1/0555/4726/5114/files/content-with-counter-bg.webp?v=1769150203')` 
+  }}
+>
+  <div className="absolute inset-0 bg-black/40 z-0" />
+
+  <div className="container mx-auto px-6 lg:px-16 relative z-10">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      
+      <div className="text-white">
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-light mb-10 leading-tight tracking-tight">
+          {data.techStacktitle} Services <br /> 
+          that Power Up Your Business Success
+        </h2>
+        
+        <div className="space-y-6 text-gray-200 text-lg max-w-2xl font-light leading-relaxed">
+          <p>
+            With the finest {data.tag} development company in UAE, (Digital Gravity), 
+            your development journey can be hassle-free. We take pride in building 
+            and delivering high-standard applications that empower your business.
+          </p>
+          <p>
+            With our determination, dedication, and skillset, we provide businesses 
+            with end-to-end services and cutting-edge solutions that make your 
+            brand visible and give you a refined digital presence.
+          </p>
+        </div>
+      </div>
+
+      <div className="flex flex-col justify-center space-y-12 lg:pl-12">
+        {stats.map((stat, index) => (
+          <div key={index} className="relative group">
+            <div className="flex items-end justify-between pb-4">
+              <span className="text-6xl md:text-7xl font-bold text-white tracking-tighter">
+                {stat.value}
+              </span>
+              
+              <span className="text-lg md:text-xl font-medium text-white/90 mb-2">
+                {stat.label}
+              </span>
+            </div>
+            
+            <div className="w-full h-[1px] bg-white/30 relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-1/3 h-full bg-white transition-all duration-700 group-hover:w-full" />
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</section>
     </>
   );
 };
