@@ -9,12 +9,17 @@ export default {
         marqueeRight: "marqueeRight 40s linear infinite",
         fadeUp: "fadeUp 0.6s ease-out",
         borderGlow: "borderGlow 3s ease-in-out infinite",
+    techSlider: "techSlider 30s linear infinite",
 
         fontFamily: {
           sans: ["Inter", "ui-sans-serif", "system-ui"],
         },
       },
       keyframes: {
+         techSlider: {
+      "0%": { transform: "translateX(0)" },
+      "100%": { transform: "translateX(-50%)" },
+    },
         marquee: {
           "0%": { transform: "translateX(0%)" },
           "100%": { transform: "translateX(-50%)" },
