@@ -114,7 +114,7 @@ const Navbar = () => {
           </li>
           <li className="hover:text-white transition-colors"><Link to="/case-studies">Our Work</Link></li>
           <li className="hover:text-white transition-colors"><Link to="/about-us">About</Link></li>
-          <li className="hover:text-white transition-colors"><Link to="/blogs">Blog</Link></li>
+          {/* <li className="hover:text-white transition-colors"><Link to="/blogs">Blog</Link></li> */}
         </ul>
 
         <div className="flex items-center gap-4">
