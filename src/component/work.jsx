@@ -27,7 +27,7 @@ const Work = () => {
       : servicesData.filter((p) => p.tag === active);
 
   return (
-<section className="relative bg-[#050505] text-white py-24 overflow-hidden min-h-screen font-sans">
+    <section className="relative bg-[#050505] text-white py-24 overflow-hidden min-h-screen font-sans">
       {/* SHINING GRID BACKGROUND */}
       <div className="absolute inset-0 z-0">
         <div
@@ -37,16 +37,16 @@ const Work = () => {
             backgroundSize: "45px 45px",
           }}
         ></div>
-         <div
-            className="absolute inset-0 opacity-[0.1]"
-            style={{
-              backgroundImage: `
+        <div
+          className="absolute inset-0 opacity-[0.1]"
+          style={{
+            backgroundImage: `
               linear-gradient(to right, #ffffff 1px, transparent 1px),
               linear-gradient(to bottom, #ffffff 1px, transparent 1px)
             `,
-              backgroundSize: "60px 60px",
-            }}
-          />
+            backgroundSize: "60px 60px",
+          }}
+        />
       </div>
 
       <style

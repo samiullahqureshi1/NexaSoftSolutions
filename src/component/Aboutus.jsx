@@ -10,6 +10,7 @@ import {
 import { HiOutlineMail, HiOutlinePhone } from "react-icons/hi";
 import { FiArrowDown, FiArrowUp, FiChevronDown } from "react-icons/fi";
 import TechStack from "./TecjStack";
+import TestimonialsSection from "./Testimonial";
 
 const AboutUs = () => {
   const logos = [
@@ -19,7 +20,7 @@ const AboutUs = () => {
     "https://www.digitalgravity.ae/assets/svg/home/client-6.svg",
     "https://www.digitalgravity.ae/assets/svg/home/client-6.svg",
   ];
-  
+
   const valuesData = [
     {
       title: "Our Mission",
@@ -66,9 +67,7 @@ const AboutUs = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   return (
     <>
-      {/* ================= ABOUT HERO ================= */}
       <section className="relative min-h-screen w-full overflow-hidden text-white font-sans">
-        {/* Video BG */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
           <iframe
             src="https://player.vimeo.com/video/1024271179?background=1&autoplay=1&loop=1&muted=1&autopause=0"
@@ -164,7 +163,6 @@ const AboutUs = () => {
         </div>
       </section>
 
-      {/* ================= VALUES SECTION ================= */}
       <section className="relative bg-[#050505] text-white py-32 px-6 overflow-hidden font-sans">
         <div className="absolute inset-0 z-0 pointer-events-none">
           <div
@@ -263,7 +261,8 @@ const AboutUs = () => {
           </div>
         </div>
       </section>
-      <TechStack/>
+      <TechStack />
+      <TestimonialsSection />
     </>
   );
 };
