@@ -67,101 +67,111 @@ const AboutUs = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   return (
     <>
-      <section className="relative min-h-screen w-full overflow-hidden text-white font-sans">
-        <div className="absolute inset-0 -z-10 overflow-hidden">
-          <iframe
-            src="https://player.vimeo.com/video/1024271179?background=1&autoplay=1&loop=1&muted=1&autopause=0"
-            className="absolute top-1/2 left-1/2 w-[120vw] h-[120vh] -translate-x-1/2 -translate-y-1/2"
-            frameBorder="0"
-            allow="autoplay; fullscreen"
+     <section className="relative min-h-screen w-full overflow-hidden text-white font-sans">
+  {/* Background Video */}
+  <div className="absolute inset-0 -z-10 overflow-hidden">
+    <iframe
+      src="https://player.vimeo.com/video/1024271179?background=1&autoplay=1&loop=1&muted=1&autopause=0"
+      className="absolute top-1/2 left-1/2 w-[180vw] h-[180vh] sm:w-[140vw] sm:h-[140vh] -translate-x-1/2 -translate-y-1/2"
+      frameBorder="0"
+      allow="autoplay; fullscreen"
+    />
+    {/* Overlay for readability */}
+    <div className="absolute inset-0 bg-black/40" />
+  </div>
+
+  {/* Content */}
+  <div className="relative z-10 max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-12 pt-40 sm:pt-48 lg:pt-[220px] pb-24 sm:pb-32 lg:pb-40">
+    {/* Badge */}
+    <div className="flex items-center gap-3 mb-8 sm:mb-10 text-xs sm:text-sm text-gray-300">
+      <span className="w-2 h-2 rounded-full bg-purple-500" />
+      <span>Our Story</span>
+    </div>
+
+    {/* Main Grid */}
+    <div className="grid grid-cols-1 lg:grid-cols-[1.25fr_1fr] gap-14 lg:gap-28 items-start">
+      <h1 className="text-[34px] sm:text-[44px] lg:text-[56px] leading-tight font-semibold tracking-tight max-w-full lg:max-w-[620px]">
+        From Dubai’s #1 Tech
+        <br />
+        Nerds to a Global
+        <br />
+        Force
+      </h1>
+
+      <div className="max-w-full lg:max-w-[520px] text-[14px] sm:text-[15px] leading-[1.8] sm:leading-[1.9] text-gray-200 space-y-5 sm:space-y-6">
+        <p>
+          With <strong className="text-white">10+ years</strong>,{" "}
+          <strong className="text-white">500+ clients</strong>,{" "}
+          <strong className="text-white">50+ developers</strong>, and a{" "}
+          <strong className="text-white">200+ team</strong>, we help brands
+          scale globally.
+        </p>
+
+        <p>
+          We deliver web, mobile, and marketing solutions powered by AI,
+          AR/VR, and emerging technologies.
+        </p>
+
+        <p>
+          Expanding across{" "}
+          <span className="bg-purple-600/30 px-2 py-0.5 rounded text-purple-300 font-medium">
+            USA
+          </span>{" "}
+          &{" "}
+          <span className="bg-purple-600/30 px-2 py-0.5 rounded text-purple-300 font-medium">
+            MENA
+          </span>
+          , empowering digital leaders worldwide.
+        </p>
+      </div>
+    </div>
+
+    {/* Logos Marquee */}
+    <div className="relative mt-24 sm:mt-32 lg:mt-40 overflow-hidden">
+      <div className="pointer-events-none absolute left-0 top-0 h-full w-24 bg-gradient-to-r from-black to-transparent z-10" />
+      <div className="pointer-events-none absolute right-0 top-0 h-full w-24 bg-gradient-to-l from-black to-transparent z-10" />
+
+      <div className="flex w-max animate-marquee gap-12 sm:gap-16 lg:gap-20 opacity-60">
+        {[...logos, ...logos].map((logo, i) => (
+          <img
+            key={i}
+            src={logo}
+            alt="brand"
+            className="h-8 sm:h-9 lg:h-10 grayscale"
           />
-        </div>
+        ))}
+      </div>
+    </div>
+  </div>
 
-        <div className="relative z-10 max-w-[1400px] mx-auto px-12 pt-[220px] pb-40">
-          <div className="flex items-center gap-3 mb-10 text-sm text-gray-300">
-            <span className="w-2 h-2 rounded-full bg-purple-500" />
-            <span>Our Story</span>
-          </div>
+  {/* Social Icons – Desktop Only */}
+  <div className="fixed left-6 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-4 z-40">
+    {[FaBehance, FaInstagram, FaFacebookF, FaLinkedinIn, FaYoutube].map(
+      (Icon, idx) => (
+        <a
+          key={idx}
+          href="#"
+          className="w-9 h-9 rounded-full bg-black border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-purple-500 transition"
+        >
+          <Icon size={14} />
+        </a>
+      )
+    )}
+  </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-[1.25fr_1fr] gap-28 items-start">
-            <h1 className="text-[56px] leading-[1.15] font-semibold tracking-tight max-w-[620px]">
-              From Dubai’s #1 Tech
-              <br />
-              Nerds to a Global
-              <br />
-              Force
-            </h1>
+  {/* Contact Icons – Desktop Only */}
+  <div className="fixed right-6 bottom-32 hidden xl:flex flex-col gap-3 z-40">
+    {[FaWhatsapp, HiOutlineMail, HiOutlinePhone].map((Icon, idx) => (
+      <div
+        key={idx}
+        className="w-10 h-10 bg-black/80 border border-white/10 rounded-full flex items-center justify-center text-white hover:bg-purple-600 transition"
+      >
+        <Icon size={18} />
+      </div>
+    ))}
+  </div>
+</section>
 
-            <div className="max-w-[520px] text-[15px] leading-[1.9] text-gray-200 space-y-6">
-              <p>
-                With <strong className="text-white">10+ years</strong>,{" "}
-                <strong className="text-white">500+ clients</strong>,{" "}
-                <strong className="text-white">50+ developers</strong>, and a{" "}
-                <strong className="text-white">200+ team</strong>, we help
-                brands scale globally.
-              </p>
-              <p>
-                We deliver web, mobile, and marketing solutions powered by AI,
-                AR/VR, and emerging technologies.
-              </p>
-              <p>
-                Expanding across{" "}
-                <span className="bg-purple-600/30 px-2 py-0.5 rounded text-purple-300 font-medium">
-                  USA
-                </span>{" "}
-                &{" "}
-                <span className="bg-purple-600/30 px-2 py-0.5 rounded text-purple-300 font-medium">
-                  MENA
-                </span>
-                , empowering digital leaders worldwide.
-              </p>
-            </div>
-          </div>
-
-          {/* Logos */}
-          <div className="relative mt-40 overflow-hidden">
-            <div className="pointer-events-none absolute left-0 top-0 h-full bg-gradient-to-r from-black to-transparent z-10" />
-            <div className="pointer-events-none absolute right-0 top-0 h-full bg-gradient-to-l from-black to-transparent z-10" />
-
-            <div className="flex w-max animate-marquee gap-20 opacity-60">
-              {[...logos, ...logos].map((logo, i) => (
-                <img
-                  key={i}
-                  src={logo}
-                  alt="brand"
-                  className="h-10 grayscale"
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Socials */}
-        <div className="fixed left-6 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-4 z-40">
-          {[FaBehance, FaInstagram, FaFacebookF, FaLinkedinIn, FaYoutube].map(
-            (Icon, idx) => (
-              <a
-                key={idx}
-                href="#"
-                className="w-9 h-9 rounded-full bg-black border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-purple-500 transition"
-              >
-                <Icon size={14} />
-              </a>
-            ),
-          )}
-        </div>
-
-        <div className="fixed right-6 bottom-32 hidden xl:flex flex-col gap-3 z-40">
-          {[FaWhatsapp, HiOutlineMail, HiOutlinePhone].map((Icon, idx) => (
-            <div
-              key={idx}
-              className="w-10 h-10 bg-black/80 border border-white/10 rounded-full flex items-center justify-center text-white hover:bg-purple-600 transition"
-            >
-              <Icon size={18} />
-            </div>
-          ))}
-        </div>
-      </section>
 
       <section className="relative bg-[#050505] text-white py-32 px-6 overflow-hidden font-sans">
         <div className="absolute inset-0 z-0 pointer-events-none">
