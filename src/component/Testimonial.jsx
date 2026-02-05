@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef } from "react";
 
 const TestimonialsSlider = () => {
   const scrollRef = useRef(null);
@@ -22,97 +22,77 @@ const TestimonialsSlider = () => {
     },
   ];
 
-  const scroll = (direction) => {
-    if (scrollRef.current) {
-      const { scrollLeft, clientWidth } = scrollRef.current;
-      const moveDistance = clientWidth * 0.4; 
-      const scrollTo = direction === 'left' ? scrollLeft - moveDistance : scrollLeft + moveDistance;
-      scrollRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' });
-    }
-  };
-
   return (
-    <section className="bg-[#f7f7f7] py-24 px-6 md:px-16 font-sans">
-      <div className="max-w-[1440px] mx-auto">
-        
-        {/* Section Header with Badge and Border Bottom */}
-        <div className="border-b border-gray-200 pb-16 mb-16">
-          <div className="flex items-center gap-3 mb-6">
-            <span className="w-3 h-3 rounded-full bg-[#9b30ff]" />
-            <span className="text-[#9b30ff] text-sm font-semibold tracking-wide uppercase">
-              Client Testimonials & Reviews
-            </span>
-          </div>
+<section className="relative bg-[#050505] py-32  overflow-hidden font-body text-white">
+  <div className="relative z-10  mx-auto">
 
-          <div className="flex flex-col md:flex-row justify-between items-end gap-8">
-            <h2 className="text-4xl md:text-6xl font-semibold text-black leading-[1.2] max-w-3xl">
-              What Our Happy Clients <br /> Say About Us
-            </h2>
-            
-            {/* Navigation Arrows */}
-            <div className="flex gap-4 pb-2">
-              <button 
-                onClick={() => scroll('left')}
-                className="w-14 h-14 rounded-full border border-gray-300 flex items-center justify-center hover:bg-white transition-all group"
-              >
-                <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" className="text-gray-400 group-hover:text-black transition-colors"><path d="M15 18l-6-6 6-6"/></svg>
-              </button>
-              <button 
-                onClick={() => scroll('right')}
-                className="w-14 h-14 rounded-full border border-gray-300 flex items-center justify-center hover:bg-white transition-all group"
-              >
-                <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" className="text-gray-400 group-hover:text-black transition-colors"><path d="M9 18l6-6-6-6"/></svg>
-              </button>
-            </div>
-          </div>
-        </div>
+    {/* HEADER */}
+    <div className="border-b border-white/10 pb-10 mb-10 ">
+      <div className="flex items-center gap-3 mb-4 px-20" >
+        <span className="w-2.5 h-2.5 rounded-full bg-purple-500 shadow-[0_0_10px_#a855f7]" />
+        <span className="text-purple-400 text-xs font-heading font-semibold tracking-[0.25em] uppercase">
+          Client Testimonials & Reviews
+        </span>
+      </div>
 
-        {/* Cards Slider */}
-        <div 
-          ref={scrollRef}
-          className="flex gap-8 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-8"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-        >
-          {testimonials.map((item, idx) => (
-            <div
-              key={idx}
-              className="min-w-[90%] md:min-w-[45%] lg:min-w-[32.5%] snap-start"
-            >
-              <div className="bg-white rounded-[40px] p-10 md:p-14 h-full min-h-[500px] shadow-sm border border-gray-100 flex flex-col relative">
-                
-                {/* Purple // Quote */}
-                <div className="text-[#9b30ff] text-2xl font-bold mb-8 tracking-tighter">
-                  //
-                </div>
+      <h2 className="text-3xl px-20 md:text-5xl lg:text-6xl font-headingAlt font-light leading-tight max-w-4xl">
+        What Our Happy Clients <br /> Say About Us
+      </h2>
+    </div>
 
-                <h4 className="text-xl md:text-2xl font-semibold text-black mb-8 leading-tight">
-                  {item.title}
-                </h4>
+    {/* SLIDER WRAPPER */}
+    <div className="overflow-hidden">
+      <div className="flex gap-6 md:gap-8 w-max animate-marquee hover:[animation-play-state:paused]">
 
-                <div className="relative pr-8 flex-grow">
-                  <p className="text-gray-600 leading-relaxed text-base font-normal">
-                    {item.text}
-                  </p>
-                  
-                  {/* Two-tone Accent Line on Right */}
-                  <div className="absolute right-0 top-0 w-[3px] h-full flex flex-col">
-                    <div className="h-2/3 bg-[#9b30ff] rounded-t-full" />
-                    <div className="h-1/3 bg-gray-400 rounded-b-full" />
-                  </div>
-                </div>
+        {[...testimonials, ...testimonials].map((item, idx) => (
+          <div
+            key={idx}
+            className="w-[88vw] sm:w-[70vw] md:w-[45vw] lg:w-[32vw] flex-shrink-0"
+          >
+            {/* CARD */}
+            <div className="bg-[#0f0f0f] rounded-[32px] p-8 md:p-10 h-full min-h-[360px] md:min-h-[420px] border border-white/10 flex flex-col transition-all duration-500 hover:border-purple-500/30">
 
-                {/* Card Specific Dots */}
-                <div className="mt-12 flex gap-2">
-                   <div className="w-2.5 h-2.5 rounded-full bg-[#9b30ff]" />
-                   <div className="w-2.5 h-2.5 rounded-full bg-gray-200" />
-                   <div className="w-2.5 h-2.5 rounded-full bg-gray-100" />
+              {/* Quote */}
+              <div className="text-purple-500 text-2xl font-heading font-bold mb-6 tracking-tighter">
+                //
+              </div>
+
+              {/* Title */}
+              <h4 className="text-lg md:text-xl font-heading font-semibold text-white mb-6 leading-snug">
+                {item.title}
+              </h4>
+
+              {/* Content */}
+              <div className="relative pr-6 flex-grow">
+                <p className="text-gray-400 leading-relaxed text-sm md:text-base font-body">
+                  {item.text}
+                </p>
+
+                {/* Accent Line */}
+                <div className="absolute right-0 top-0 w-[3px] h-full flex flex-col">
+                  <div className="h-2/3 bg-purple-500 rounded-t-full shadow-[0_0_10px_#a855f7]" />
+                  <div className="h-1/3 bg-white/10 rounded-b-full" />
                 </div>
               </div>
+
+              {/* Dots */}
+              <div className="mt-8 flex gap-2">
+                <div className="w-2.5 h-2.5 rounded-full bg-purple-500" />
+                <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
+                <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
+              </div>
+
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
+
       </div>
-    </section>
+    </div>
+  </div>
+</section>
+
+
+
   );
 };
 
