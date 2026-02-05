@@ -34,7 +34,7 @@ function App() {
         <Route path="/case-study/:id" element={<CaseStudy />} />
 
           <Route path="/services/:service" element={<ServiceHero />} />
-                    <Route path="/our-blogs" element={<BlogsPage />} />
+                   <Route path="/our-blogs" element={<BlogsPage />} />
 
         </Routes>
         <Footer/>
