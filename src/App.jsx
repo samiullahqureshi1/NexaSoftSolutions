@@ -73,23 +73,22 @@ function App() {
   return (
     <>
       <Navbar />
-  <ScrollToTop /> 
+      <ScrollToTop />
       <AnimatePresence mode="wait" initial={false}>
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Home />} />
           <Route path="/about-us" element={<AboutUs />} />
-                    <Route path="/case-studies" element={<Work />} />
-        <Route path="/case-study/:id" element={<CaseStudy />} />
+          <Route path="/case-studies" element={<Work />} />
+          <Route path="/case-study/:id" element={<CaseStudy />} />
 
           <Route path="/services/:service" element={<ServiceHero />} />
-                    <Route path="/our-blogs" element={<BlogsPage />} />
-                    <Route path="/contact" element={<Contact />} />
-
+          <Route path="/our-blogs" element={<BlogsPage />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
-        <Footer/>
+        <Footer />
       </AnimatePresence>
     </>
   );
 }
 
-export default App
+export default App;

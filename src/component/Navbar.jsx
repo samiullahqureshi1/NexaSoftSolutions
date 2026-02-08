@@ -128,7 +128,7 @@
 
 // export default Navbar;
 import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   MdSubdirectoryArrowRight,
   MdMenu,
@@ -138,6 +138,7 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 import { HiOutlineMail } from "react-icons/hi";
 import { FiPhoneCall } from "react-icons/fi";
+import { ContactModal } from "./ContactModal";
 
 const serviceLinks = [
   [
@@ -185,8 +186,17 @@ const Navbar = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+  
+  const navigate=useNavigate()
   const location = useLocation();
-
+const handleGetQuote = () => {
+    if (window.innerWidth < 640) {
+      navigate("/contact"); // mobile → new page
+    } else {
+      setIsModalOpen(true); // desktop → modal
+    }
+  };
   useEffect(() => {
     setIsHovered(false);
     setMobileMenuOpen(false);
@@ -278,7 +288,7 @@ const Navbar = () => {
     <div className="flex items-center gap-4">
 
       {/* CTA */}
-      <button className="hidden md:inline-flex px-8 py-3 rounded-full border border-purple-500/40 text-sm font-heading font-semibold text-purple-300 hover:bg-purple-500/10 hover:shadow-[0_0_25px_#a855f7] transition-all duration-500">
+      <button onClick={handleGetQuote} className="hidden md:inline-flex px-8 py-3 rounded-full border border-purple-500/40 text-sm font-heading font-semibold text-purple-300 hover:bg-purple-500/10 hover:shadow-[0_0_25px_#a855f7] transition-all duration-500">
         Speak to an expert
       </button>
 
@@ -301,6 +311,10 @@ const Navbar = () => {
       </button>
     </div>
   </nav>
+  <ContactModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+        />
 </header>
 
   );

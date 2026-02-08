@@ -13,6 +13,7 @@ import { HiOutlineMail, HiOutlinePhone } from "react-icons/hi";
 import { FiArrowDown, FiChevronDown, FiChevronRight } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import { ContactModal } from "./ContactModal";
+import { SiFiverr, SiUpwork } from "react-icons/si";
 
 const ServiceHero = () => {
   const { service } = useParams();
@@ -209,7 +210,15 @@ const ServiceHero = () => {
     { name: "Vietnam", code: "+84", iso: "vn" },
   ];
   const [selected, setSelected] = useState(countries[0]);
-
+const socialLinks = [
+  // { icon: FaBehance, url: "https://www.behance.net/yourusername" },
+  { icon: FaInstagram, url: "https://www.instagram.com/thenexasoft.solutions/" },
+  { icon: FaFacebookF, url: "https://www.facebook.com/yourusername" },
+  { icon: FaLinkedinIn, url: "https://www.linkedin.com/company/nexasoft-solutions/" },
+  { icon: SiUpwork, url: "https://www.upwork.com/agencies/1961784720708002202/" },
+  { icon: SiFiverr, url: "https://www.fiverr.com/yourusername" },
+  // { icon: FaYoutube, url: "https://www.youtube.com/@yourchannel" },
+];
   return (
     <>
       <section className="relative min-h-screen bg-[#050505] flex items-center overflow-hidden text-white">
@@ -224,29 +233,19 @@ const ServiceHero = () => {
         </div>
 
         {/* LEFT SOCIAL */}
-        <div className="fixed left-6 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-4 z-40">
-          {[FaBehance, FaInstagram, FaFacebookF, FaLinkedinIn, FaYoutube].map(
-            (Icon, i) => (
-              <a
-                key={i}
-                href="#"
-                className="
-            relative w-9 h-9 rounded-full
-            bg-black/70
-            border border-purple-500/20
-            flex items-center justify-center
-            text-gray-400
-            transition-all duration-300
-            hover:text-white
-            hover:border-purple-500
-            hover:shadow-[0_0_15px_rgba(168,85,247,0.4)]
-          "
-              >
-                <Icon size={14} />
-              </a>
-            ),
-          )}
-        </div>
+         <div className="fixed left-6 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-4 z-40">
+      {socialLinks.map(({ icon: Icon, url }, i) => (
+        <a
+          key={i}
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-9 h-9 rounded-full bg-black border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-purple-500/30 transition-all"
+        >
+          <Icon size={14} />
+        </a>
+      ))}
+    </div>
 
         {/* CONTENT */}
         <div className="relative z-10 container mx-auto px-6 lg:px-16 py-20">

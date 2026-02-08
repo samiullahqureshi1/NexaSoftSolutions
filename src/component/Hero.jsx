@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ContactModal } from "./ContactModal";
+import heroImage from "../assets/heroimage.webp";
 
 const Hero = () => {
   const texts = [
@@ -11,13 +12,14 @@ const Hero = () => {
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleCTA = () => {
-    if (window.innerWidth < 640) {
-      navigate("/contact"); // mobile → new page
-    } else {
-      setIsModalOpen(true); // desktop → modal
-    }
-  };
+ const handleCTA = () => {
+  if (window.innerWidth >= 1024) {
+    setIsModalOpen(true); // desktop only
+  } else {
+    navigate("/contact"); // mobile + tablet + laptop
+  }
+};
+
 
   const [textIndex, setTextIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
@@ -55,11 +57,11 @@ const Hero = () => {
         <div
           className="absolute inset-0 bg-cover bg-center scale-105"
           style={{
-            backgroundImage:
-              "url('https://cdn.shopify.com/s/files/1/0725/3091/9640/files/group-young-business-people-working-office.jpg?v=1770096033')",
+            backgroundImage: `url(${heroImage})`,
             filter: "brightness(0.35)",
           }}
         />
+
         <div className="absolute inset-0 bg-black/40" />
       </div>
 
