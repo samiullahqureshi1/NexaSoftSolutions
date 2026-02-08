@@ -149,34 +149,20 @@ const serviceLinks = [
     "Cloud Solutions",
     "Shopify Store Build & Redesign",
     "Shopify Theme Customization",
+    "Shopify Store Migration",
+    "Shopify Troubleshooting & Support",
+    "Shopify Performance & Speed Optimization",
   ],
   [
+    "Shopify Custom Apps & Integrations",
     "Shopify SEO Optimization",
+    "Shopify Conversion Rate Optimization",
     "Shopify Analytics & Tracking",
-    "Shopify Digital Branding",
-    "Shopify Business Strategy",
-    "Website Audit",
+    "Shopify Email Marketing",
     "Shopify Content Marketing",
+    "Shopify Social Media Marketing",
+    "Shopify Digital Branding & Visual Identity",
   ],
-];
-
-const gccGiants = [
-  "BEYOND",
-  "GBM",
-  "SkillBridge",
-  "mediaPro",
-  "DIFC",
-  "SANAD",
-  "exa",
-  "ADIB",
-  "flydubai",
-  "Terra Nexus",
-  "EMDAD",
-  "ATMOSPHERE",
-  "SHARJAH",
-  "SEPHORA",
-  "Khazna",
-  "OHANA",
 ];
 
 const toSlug = (text) =>
@@ -190,13 +176,16 @@ const Navbar = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
+
   const handleGetQuote = () => {
-    if (window.innerWidth < 640) {
-      navigate("/contact"); // mobile → new page
+    if (window.innerWidth < 1024) { // Changed to 1024 to match LG breakpoint
+      setMobileMenuOpen(false);
+      navigate("/contact");
     } else {
-      setIsModalOpen(true); // desktop → modal
+      setIsModalOpen(true);
     }
   };
+
   useEffect(() => {
     setIsHovered(false);
     setMobileMenuOpen(false);
@@ -204,31 +193,27 @@ const Navbar = () => {
   }, [location.pathname]);
 
   return (
-    <header className="fixed top-0 left-0 w-full z-[100] px-4 py-4 lg:px-0 font-body">
-      <nav className="max-w-[1440px] mx-auto flex items-center justify-between px-6 py-3 lg:py-4 rounded-full bg-[#050505]/90 backdrop-blur-xl border border-white/10">
-        {/* LOGO */}
-        <Link
-          to="/"
-          className="flex items-center gap-1 text-lg text-white font-heading"
-        >
-          <span className="font-light">NexaSoft</span>
-          <span className="font-semibold text-purple-400">Solutions</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-purple-500 mt-1.5 shadow-[0_0_10px_#a855f7]" />
+    <header className="fixed top-0 left-0 w-full z-[100] px-2 sm:px-4 pt-4">
+      <nav className="max-w-[1440px] mx-auto flex items-center justify-between px-4 lg:px-6 py-3 lg:py-4 rounded-full bg-black/80 backdrop-blur-xl border border-white/10 shadow-lg">
+        
+        {/* LOGO - Flex shrink 0 prevents it from squishing */}
+        <Link to="/" className="flex items-center gap-1 text-white text-base sm:text-lg font-semibold flex-shrink-0">
+          NexaSoft
+          <span className="text-purple-400">Solutions</span>
+          <span className="hidden sm:block w-1.5 h-1.5 bg-purple-500 rounded-full mt-2" />
         </Link>
 
-        {/* DESKTOP NAV */}
-        <ul className="hidden lg:flex items-center gap-10 text-sm font-heading text-gray-400">
+        {/* DESKTOP NAV - Visible from 1024px and up */}
+        <ul className="hidden lg:flex items-center gap-6 xl:gap-10 text-sm text-gray-400">
           <li
-            className="relative py-2"
+            className="relative"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
             <button className="flex items-center gap-1 hover:text-white transition-colors">
               Services
               <MdKeyboardArrowDown
-                className={`text-lg transition-transform ${
-                  isHovered ? "rotate-180" : ""
-                }`}
+                className={`transition-transform duration-300 ${isHovered ? "rotate-180" : ""}`}
               />
             </button>
 
@@ -237,23 +222,23 @@ const Navbar = () => {
                 <motion.div
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 8 }}
-                  className="absolute top-full -left-40 pt-6 w-[820px]"
+                  exit={{ opacity: 0, y: 10 }}
+                  className="absolute top-full -left-48 xl:-left-40 pt-6 w-[700px] xl:w-[800px]"
                 >
-                  <div className="bg-[#0f0f0f] border border-white/10 rounded-[32px] p-8 shadow-[0_40px_100px_rgba(0,0,0,0.8)]">
+                  <div className="bg-[#0f0f0f] border border-white/10 rounded-3xl p-8 shadow-2xl">
                     <div className="grid grid-cols-2 gap-x-10">
-                      {serviceLinks.map((column, i) => (
-                        <div key={i}>
-                          {column.map((item) => (
+                      {serviceLinks.map((col, i) => (
+                        <div key={i} className="space-y-1">
+                          {col.map((item) => (
                             <Link
                               key={item}
                               to={`/services/${toSlug(item)}`}
-                              className="group flex items-center justify-between py-3 border-b border-white/5 hover:border-purple-500/30 transition-all"
+                              className="flex justify-between items-center py-2.5 border-b border-white/5 hover:border-purple-500/40 group transition-all"
                             >
-                              <span className="text-gray-400 group-hover:text-white transition-colors">
+                              <span className="group-hover:text-white text-[13px] xl:text-sm">
                                 {item}
                               </span>
-                              <MdSubdirectoryArrowRight className="text-gray-600 group-hover:text-purple-500 group-hover:translate-x-1 transition-all" />
+                              <MdSubdirectoryArrowRight className="text-gray-600 group-hover:text-purple-500" />
                             </Link>
                           ))}
                         </div>
@@ -265,65 +250,111 @@ const Navbar = () => {
             </AnimatePresence>
           </li>
 
-          <li>
-            <Link
-              to="/case-studies"
-              className="hover:text-white transition-colors"
-            >
-              Our Work
-            </Link>
-          </li>
-
-          <li>
-            <Link to="/about-us" className="hover:text-white transition-colors">
-              About
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/our-blogs"
-              className="hover:text-white transition-colors"
-            >
-              Our Blogs
-            </Link>
-          </li>
+          {["Case Studies", "About Us", "Our Blogs"].map((item) => (
+            <li key={item}>
+              <Link to={`/${toSlug(item)}`} className="hover:text-white transition-colors">
+                {item.replace('Our ', '')}
+              </Link>
+            </li>
+          ))}
         </ul>
 
         {/* ACTIONS */}
-        <div className="flex items-center gap-4">
-          {/* CTA */}
+        <div className="flex items-center gap-2 sm:gap-3">
           <button
             onClick={handleGetQuote}
-            className="hidden md:inline-flex px-8 py-3 rounded-full border border-purple-500/40 text-sm font-heading font-semibold text-purple-300 hover:bg-purple-500/10 hover:shadow-[0_0_25px_#a855f7] transition-all duration-500"
+            className="hidden md:inline-flex px-5 xl:px-7 py-2.5 xl:py-3 rounded-full border text-purple-400 border border-purple-500/40 hover:bg-purple-500/10 transition-all hover:shadow-[0_0_25px_#a855f7]  text-sm font-medium"
           >
             Speak to an expert
           </button>
 
-          {/* ICON ACTIONS */}
-          <div className="hidden md:flex gap-3">
-            <a className="p-3 rounded-full border border-white/10 text-gray-400 hover:text-white hover:border-purple-500/30 transition-all">
-              <HiOutlineMail />
+          <div className="hidden sm:flex gap-2">
+            <a href="mailto:info@nexasoft.com" className="p-2.5 rounded-full border border-white/10 hover:border-purple-500/30 text-gray-400 hover:text-white transition-all">
+              <HiOutlineMail size={18} />
             </a>
-            <a className="p-3 rounded-full border border-white/10 text-gray-400 hover:text-white hover:border-purple-500/30 transition-all">
-              <FiPhoneCall />
+            <a href="tel:+123456789" className="p-2.5 rounded-full border border-white/10 hover:border-purple-500/30 text-gray-400 hover:text-white transition-all">
+              <FiPhoneCall size={18} />
             </a>
           </div>
 
           {/* MOBILE TOGGLE */}
           <button
-            className="lg:hidden text-white"
+            className="lg:hidden text-white p-1 hover:bg-white/5 rounded-lg transition"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle Menu"
           >
             {mobileMenuOpen ? <MdClose size={28} /> : <MdMenu size={28} />}
           </button>
         </div>
       </nav>
-      <ContactModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
+
+      {/* MOBILE MENU */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="lg:hidden mt-3 bg-[#0f0f0f] rounded-3xl border border-white/10 overflow-hidden shadow-2xl"
+          >
+            {/* Added max-height and overflow-y-auto to handle long lists on short screens */}
+            <div className="p-6 space-y-4 text-gray-300 max-h-[80vh] overflow-y-auto">
+              <button
+                onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                className="w-full flex justify-between items-center py-2 text-lg font-medium"
+              >
+                Services
+                <MdKeyboardArrowDown
+                  className={`transition-transform duration-300 ${mobileServicesOpen ? "rotate-180" : ""}`}
+                />
+              </button>
+
+              <AnimatePresence>
+                {mobileServicesOpen && (
+                  <motion.div 
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    className="pl-4 space-y-4 border-l border-white/5 overflow-hidden"
+                  >
+                    {[...serviceLinks[0], ...serviceLinks[1]].map((item) => (
+                      <Link
+                        key={item}
+                        to={`/services/${toSlug(item)}`}
+                        className="block text-sm py-1 hover:text-purple-400 transition-colors"
+                      >
+                        {item}
+                      </Link>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              <Link to="/case-studies" className="block py-2 text-lg font-medium">Our Work</Link>
+              <Link to="/about-us" className="block py-2 text-lg font-medium">About</Link>
+              <Link to="/our-blogs" className="block py-2 text-lg font-medium">Blogs</Link>
+
+              <div className="pt-4 space-y-4">
+                <button
+                  onClick={handleGetQuote}
+                  className="w-full py-4 rounded-2xl bg-purple-600 text-white font-semibold shadow-lg shadow-purple-500/20"
+                >
+                  Speak to an expert
+                </button>
+                <div className="flex justify-center gap-6 py-2">
+                   <HiOutlineMail size={24} className="text-gray-400" />
+                   <FiPhoneCall size={24} className="text-gray-400" />
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </header>
   );
 };
 
 export default Navbar;
+

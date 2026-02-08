@@ -221,240 +221,161 @@ const socialLinks = [
 ];
   return (
     <>
-      <section className="relative min-h-screen bg-[#050505] flex items-center overflow-hidden text-white">
-        {/* BACKGROUND */}
-        <div className="absolute inset-0 z-0">
-          <div
-            className="absolute inset-0 bg-cover bg-center scale-110 blur-md brightness-[0.45]"
-            style={{ backgroundImage: `url(${data.image})` }}
-          />
-          <div className="absolute inset-0 bg-black/40" />
-          <div className="absolute inset-0 bg-gradient-to-l from-purple-900/40 via-transparent to-transparent" />
+    <section className="relative min-h-screen bg-[#050505] flex items-center overflow-hidden text-white">
+  {/* BACKGROUND */}
+  <div className="absolute inset-0 z-0">
+    <div
+      className="absolute inset-0 bg-cover bg-center scale-110 blur-md brightness-[0.45]"
+      style={{ backgroundImage: `url(${data.image})` }}
+    />
+    <div className="absolute inset-0 bg-black/50" />
+    <div className="absolute inset-0 bg-gradient-to-l from-purple-900/40 via-transparent to-transparent" />
+  </div>
+
+  {/* LEFT SOCIAL (XL ONLY) */}
+  <div className="fixed left-6 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-4 z-40">
+    {socialLinks.map(({ icon: Icon, url }, i) => (
+      <a
+        key={i}
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-9 h-9 rounded-full bg-black/80 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-purple-500/30 transition"
+      >
+        <Icon size={14} />
+      </a>
+    ))}
+  </div>
+
+  {/* CONTENT */}
+  <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 py-24">
+    <div className="grid lg:grid-cols-2 gap-16 xl:gap-28 items-center">
+      
+      {/* TEXT */}
+      <div className="max-w-xl">
+        <div className="flex items-center gap-3 mb-6">
+          <span className="w-2.5 h-2.5 rounded-full bg-purple-500 shadow-[0_0_12px_#a855f7]" />
+          <span className="text-xs uppercase tracking-wide text-gray-300">
+            {data.tag}
+          </span>
         </div>
 
-        {/* LEFT SOCIAL */}
-         <div className="fixed left-6 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-4 z-40">
-      {socialLinks.map(({ icon: Icon, url }, i) => (
-        <a
-          key={i}
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-9 h-9 rounded-full bg-black border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-purple-500/30 transition-all"
-        >
-          <Icon size={14} />
-        </a>
-      ))}
-    </div>
+        <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-headingAlt leading-tight mb-6">
+          {(() => {
+            const words = data.title.split(" ");
+            const mid = Math.ceil(words.length / 2);
+            return (
+              <>
+                <span className="block">{words.slice(0, mid).join(" ")}</span>
+                <span className="block">{words.slice(mid).join(" ")}</span>
+              </>
+            );
+          })()}
+        </h1>
 
-        {/* CONTENT */}
-        <div className="relative z-10 container mx-auto px-6 lg:px-16 py-20">
-          <div className="grid lg:grid-cols-2 gap-14 xl:gap-24 items-center">
-            {/* TEXT */}
-            <div>
-              <div className="flex items-center gap-3 mb-8">
-                <span className="w-2.5 h-2.5 rounded-full bg-purple-500 shadow-[0_0_12px_#a855f7]" />
-                <span className="text-xs uppercase tracking-wide text-gray-300">
-                  {data.tag}
-                </span>
-              </div>
+        <p className="text-base md:text-lg text-gray-400 leading-relaxed">
+          {data.description}
+        </p>
+      </div>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-headingAlt leading-[1.15]  mb-6">
-                {(() => {
-                  const words = data.title.split(" ");
-                  const mid = Math.ceil(words.length / 2);
-                  return (
-                    <>
-                      <span className="block">
-                        {words.slice(0, mid).join(" ")}
-                      </span>
-                      <span className="block">
-                        {words.slice(mid).join(" ")}
-                      </span>
-                    </>
-                  );
-                })()}
-              </h1>
+      {/* FORM */}
+      <div className="flex justify-center lg:justify-end mt-2">
+        <div className="w-full max-w-[460px] bg-black/40 backdrop-blur-xl border border-white/20 rounded-[36px] p-8 sm:p-10 shadow-2xl">
+          <h3 className="text-lg sm:text-xl font-semibold mb-6">
+            Have any questions?
+          </h3>
 
-              <p className="text-base md:text-lg text-gray-400 max-w-xl leading-relaxed">
-                {data.description}
-              </p>
-            </div>
+          <div className="space-y-5">
+            {["Name*", "Email*"].map((ph, i) => (
+              <input
+                key={i}
+                placeholder={ph}
+                className="w-full bg-transparent border border-white/20 rounded-xl px-5 py-3.5 text-white placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500/40 transition"
+              />
+            ))}
 
-            {/* FORM */}
-            <div className="flex justify-center lg:justify-end">
-              <div className="w-full max-w-[480px] bg-black/30 backdrop-blur-md border border-white/20 rounded-[40px] p-8 md:p-12 shadow-2xl">
-                <h3 className="text-xl md:text-2xl font-semibold mb-8">
-                  Have any questions?
-                </h3>
-
-                <div className="space-y-5">
-                  {["Name*", "Email*"].map((ph, i) => (
-                    <input
-                      key={i}
-                      placeholder={ph}
-                      className="
-                  w-full bg-transparent
-                  border border-white/20
-                  rounded-xl px-6 py-4
-                  text-white placeholder-gray-400
-                  focus:border-purple-500 focus:ring-1 focus:ring-purple-500/40
-                  transition
-                "
-                    />
+            {/* PHONE */}
+            <div className="relative">
+              <div className="absolute left-4 top-1/2 -translate-y-1/2 flex items-center gap-2">
+                <img
+                  src={`https://flagcdn.com/w20/${selected.iso}.png`}
+                  className="w-5 h-3 rounded-sm"
+                  alt={selected.name}
+                />
+                <span className="text-sm">{selected.code}</span>
+                <div className="h-5 w-px bg-white/70 mx-2" />
+                <select
+                  value={selected.code}
+                  onChange={(e) =>
+                    setSelected(
+                      countries.find((c) => c.code === e.target.value)
+                    )
+                  }
+                  className="absolute text-black inset-0 opacity-0 cursor-pointer"
+                >
+                  {countries.map((c, idx) => (
+                    <option key={idx} value={c.code}>
+                      {c.name} ({c.code})
+                    </option>
                   ))}
+                </select>
+              </div>
 
-                  {/* PHONE */}
-                  <div className="relative">
-                    {/* COUNTRY SELECT */}
-                    <div className="absolute left-4 top-1/2 -translate-y-1/2 flex items-center gap-2 pr-3">
-                      {/* FLAG */}
-                      <img
-                        src={`https://flagcdn.com/w20/${selected.iso}.png`}
-                        className="w-5 h-3 rounded-sm"
-                        alt={selected.name}
-                      />
+              <input
+                placeholder="Phone No*"
+                className="w-full bg-transparent border border-white/20 rounded-xl pl-28 pr-5 py-3.5 text-white placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500/40 transition"
+              />
+            </div>
 
-                      {/* CODE */}
-                      <span className="text-sm text-white">
-                        {selected.code}
-                      </span>
+            {/* BUDGET */}
+            <div>
+              <div className="flex justify-between text-[10px] uppercase tracking-wider mb-2 text-gray-300">
+                <span>$1K</span>
+                <span className="text-purple-400 font-semibold">
+                  Budget: ${Number(budget).toLocaleString()}
+                </span>
+                <span>$50K</span>
+              </div>
 
-                      {/* CLEAN DIVIDER */}
-                      <div className="h-5 w-px bg-white/20 mx-2" />
-
-                      {/* HIDDEN SELECT */}
-                      <select
-                        value={selected.code}
-                        onChange={(e) =>
-                          setSelected(
-                            countries.find((c) => c.code === e.target.value),
-                          )
-                        }
-                        className="
-        absolute inset-0 opacity-0 cursor-pointer bg-gray-800
-      "
-                      >
-                        {countries.map((c, idx) => (
-                          <option key={idx} value={c.code}>
-                            {c.name} ({c.code})
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    {/* PHONE INPUT */}
-                    <input
-                      placeholder="Phone No*"
-                      className="
-      w-full bg-transparent
-      border border-white/20
-      rounded-xl pl-28 pr-6 py-4
-      text-white placeholder-gray-400
-      focus:border-purple-500 focus:ring-1 focus:ring-purple-500/40
-      transition
-    "
-                    />
-                  </div>
-
-                  {/* BUDGET */}
-                  <div>
-                    {/* LABELS */}
-                    <div className="flex justify-between text-[10px] uppercase tracking-wider mb-3 text-gray-300">
-                      <span>USD 1K</span>
-                      <span className="text-purple-400 font-bold">
-                        Budget: {Number(budget).toLocaleString()}
-                      </span>
-                      <span>USD 50K</span>
-                    </div>
-
-                    {/* SLIDER */}
-                    <div className="relative h-2 rounded-full bg-white/10">
-                      {/* PROGRESS */}
-                      <div
-                        className="absolute top-0 left-0 h-full rounded-full bg-purple-500 transition-all duration-300"
-                        style={{ width: `${(budget / 50000) * 100}%` }}
-                      />
-
-                      {/* RANGE INPUT */}
-                      <input
-                        type="range"
-                        min="5000"
-                        max="50000"
-                        value={budget}
-                        onChange={(e) => setBudget(e.target.value)}
-                        className="
-        absolute inset-0 w-full
-        bg-transparent appearance-none
-        cursor-pointer
-        [&::-webkit-slider-thumb]:appearance-none
-        [&::-webkit-slider-thumb]:h-5
-        [&::-webkit-slider-thumb]:w-5
-        [&::-webkit-slider-thumb]:rounded-full
-        [&::-webkit-slider-thumb]:bg-purple-500
-        [&::-webkit-slider-thumb]:shadow-[0_0_15px_#a855f7]
-        [&::-webkit-slider-thumb]:border-2
-        [&::-webkit-slider-thumb]:border-[#050505]
-      "
-                      />
-                    </div>
-                  </div>
-
-                  <textarea
-                    rows="2"
-                    placeholder="Tell us about your project"
-                    className="
-                w-full bg-transparent
-                border border-white/20
-                rounded-2xl px-6 py-4
-                text-white placeholder-gray-400
-                focus:border-purple-500 focus:ring-1 focus:ring-purple-500/40
-                resize-none transition
-              "
-                  />
-
-                  {/* PRIMARY CTA */}
-                  <button
-                    className="
-                w-full
-                bg-gradient-to-br from-[#6318C6] via-[#8B22CD] to-[#A526D1]
-                py-4 rounded-full
-                text-sm font-semibold
-                hover:brightness-110
-                active:scale-95
-                transition-all
-                shadow-[0_10px_30px_rgba(139,44,245,0.35)]
-              "
-                  >
-                    Submit
-                  </button>
-                </div>
+              <div className="relative h-2 rounded-full bg-white/10">
+                <div
+                  className="absolute h-full rounded-full bg-purple-500"
+                  style={{ width: `${(budget / 50000) * 100}%` }}
+                />
+                <input
+                  type="range"
+                  min="5000"
+                  max="50000"
+                  value={budget}
+                  onChange={(e) => setBudget(e.target.value)}
+                  className="absolute inset-0 w-full appearance-none bg-transparent cursor-pointer
+                  [&::-webkit-slider-thumb]:appearance-none
+                  [&::-webkit-slider-thumb]:h-4
+                  [&::-webkit-slider-thumb]:w-4
+                  [&::-webkit-slider-thumb]:rounded-full
+                  [&::-webkit-slider-thumb]:bg-purple-500"
+                />
               </div>
             </div>
+
+            <textarea
+              rows="3"
+              placeholder="Tell us about your project"
+              className="w-full bg-transparent border border-white/20 rounded-2xl px-5 py-3.5 text-white placeholder-gray-400 resize-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500/40 transition"
+            />
+
+            <button className="w-full py-4 rounded-full bg-gradient-to-br from-purple-600 via-purple-700 to-purple-800 font-semibold hover:brightness-110 active:scale-95 transition shadow-xl">
+              Submit
+            </button>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
 
-        {/* RIGHT CONTACT */}
-        <div className="fixed right-6 bottom-40 hidden xl:flex flex-col gap-3 z-40">
-          {[FaWhatsapp, HiOutlineMail, HiOutlinePhone].map((Icon, i) => (
-            <div
-              key={i}
-              className="
-          w-9 h-9 rounded-full
-          bg-black/70
-          border border-purple-500/20
-          flex items-center justify-center
-          text-gray-400
-          hover:text-white hover:border-purple-500
-          hover:shadow-[0_0_15px_rgba(168,85,247,0.4)]
-          transition
-        "
-            >
-              <Icon size={18} />
-            </div>
-          ))}
-        </div>
-      </section>
+ 
+</section>
+
 
       {section && (
         <section className="bg-[#050505] py-32 relative overflow-hidden font-body text-white">
@@ -855,7 +776,7 @@ const socialLinks = [
         <div className="fixed right-0 top-1/2 -translate-y-1/2 z-50">
           <button
             onClick={handleGetQuote}
-            className="font-sans    bg-gradient-to-br from-[#6318C6] via-[#8B22CD] to-[#A526D1] text-white py-8 px-3 rounded-l-[20px] shadow-[0_0_30px_rgba(139,44,245,0.3)] transition-all group"
+            className="font-sans  hidden sm:flex  bg-gradient-to-br from-[#6318C6] via-[#8B22CD] to-[#A526D1] text-white py-8 px-3 rounded-l-[20px] shadow-[0_0_30px_rgba(139,44,245,0.3)] transition-all group"
           >
             <span className="[writing-mode:vertical-lr] rotate-180 text-[11px] font-semibold tracking-[0.2em] uppercase">
               Get A Quote!
