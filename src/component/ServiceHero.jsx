@@ -455,129 +455,101 @@ const socialLinks = [
         </section>
       )}
 
-      <section className="bg-[#050505] py-24 text-white relative font-body">
-        <div className="container mx-auto px-6 lg:px-16">
-          {/* Header */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <span className="w-2.5 h-2.5 rounded-full bg-purple-500 shadow-[0_0_12px_#a855f7]" />
-                <span className="text-xs font-heading font-semibold tracking-[0.2em] uppercase text-gray-400">
-                  Our Work
-                </span>
-              </div>
+     <section className="bg-[#050505] py-16 md:py-24 text-white relative font-body">
+  <div className="container mx-auto px-4 sm:px-6 lg:px-16">
+    {/* Header */}
+    <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-6 md:gap-8">
+      <div>
+        <div className="flex items-center gap-2 mb-4">
+          <span className="w-2.5 h-2.5 rounded-full bg-purple-500 shadow-[0_0_12px_#a855f7]" />
+          <span className="text-xs font-heading font-semibold tracking-[0.2em] uppercase text-gray-400">
+            Our Work
+          </span>
+        </div>
 
-              <h2 className="text-5xl md:text-7xl font-headingAlt font-light leading-tight">
-                10+ Years Exp but <br /> Countless Innovations
-              </h2>
-            </div>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-headingAlt font-light leading-tight">
+          10+ Years Exp but <br /> Countless Innovations
+        </h2>
+      </div>
 
-            {/* PRIMARY CTA */}
-            <button
-              className="
-          font-heading
-          bg-gradient-to-br from-[#6318C6] via-[#8B22CD] to-[#A526D1]
-          text-white
-          px-10 py-3.5
-          rounded-full
-          text-sm font-semibold
-          shadow-[0_10px_30px_rgba(139,44,245,0.35)]
-          hover:brightness-110
-          active:scale-95
-          transition-all
-        "
-            >
-              View More
-            </button>
-          </div>
+      {/* PRIMARY CTA */}
+      <button className="font-heading bg-gradient-to-br from-[#6318C6] via-[#8B22CD] to-[#A526D1] text-white px-8 sm:px-10 py-3 sm:py-3.5 rounded-full text-sm sm:text-base font-semibold shadow-[0_10px_30px_rgba(139,44,245,0.35)] hover:brightness-110 active:scale-95 transition-all">
+        View More
+      </button>
+    </div>
 
-          {/* Tabs */}
-          <div className="flex flex-wrap items-center gap-x-10 gap-y-6 mb-20 border-b border-white/5 pb-8 font-heading">
-            {Object.keys(categoryData).map((key) => {
-              const isActive = activeTab === key;
-              return (
-                <button
-                  key={key}
-                  onClick={() => setActiveTab(key)}
-                  className={`
-              group flex items-center gap-2 text-lg capitalize
-              transition-all duration-300
-              ${isActive ? "text-white" : "text-gray-500 hover:text-gray-300"}
-            `}
-                >
-                  <FiChevronRight
-                    className={`
-                transition-all duration-300
-                ${
-                  isActive
-                    ? "opacity-100 translate-x-0 text-purple-400"
-                    : "opacity-0 -translate-x-2"
-                }
-              `}
-                  />
-                  {key.replace(/-/g, " ")}
-                </button>
-              );
-            })}
-          </div>
+    {/* Tabs */}
+    <div className="flex flex-wrap items-center gap-x-6 sm:gap-x-10 gap-y-4 sm:gap-y-6 mb-12 sm:mb-20 border-b border-white/5 pb-6 sm:pb-8 font-heading">
+      {Object.keys(categoryData).map((key) => {
+        const isActive = activeTab === key;
+        return (
+          <button
+            key={key}
+            onClick={() => setActiveTab(key)}
+            className={`group flex items-center gap-2 text-base sm:text-lg capitalize transition-all duration-300 ${
+              isActive
+                ? "text-white"
+                : "text-gray-500 hover:text-gray-300"
+            }`}
+          >
+            <FiChevronRight
+              className={`transition-all duration-300 ${
+                isActive
+                  ? "opacity-100 translate-x-0 text-purple-400"
+                  : "opacity-0 -translate-x-2"
+              }`}
+            />
+            {key.replace(/-/g, " ")}
+          </button>
+        );
+      })}
+    </div>
 
-          {/* Content */}
-          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center transition-all duration-500">
-            {/* LEFT */}
-            <div className="lg:col-span-5 space-y-10 animate-fadeIn">
-              <h3 className="text-4xl md:text-5xl font-headingAlt font-light leading-tight">
-                {categoryData[activeTab].title}
-              </h3>
+    {/* Content */}
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center transition-all duration-500">
+      {/* LEFT */}
+      <div className="lg:col-span-5 space-y-6 sm:space-y-8 animate-fadeIn">
+        <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-headingAlt font-light leading-tight">
+          {categoryData[activeTab].title}
+        </h3>
 
-              <p className="text-gray-400 leading-relaxed text-lg max-w-lg font-body">
-                {categoryData[activeTab].desc}
-              </p>
+        <p className="text-gray-400 leading-relaxed text-base sm:text-lg max-w-full sm:max-w-lg font-body">
+          {categoryData[activeTab].desc}
+        </p>
 
-              <div className="space-y-4">
-                <h4 className="text-6xl md:text-7xl font-headingAlt font-light text-white">
-                  75%
-                </h4>
-                <p className="text-gray-400 text-lg leading-snug max-w-[250px] font-body">
-                  increase in online interaction and service accessibility.
-                </p>
-              </div>
+        <div className="space-y-4">
+          <h4 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-headingAlt font-light text-white">
+            75%
+          </h4>
+          <p className="text-gray-400 text-base sm:text-lg leading-snug max-w-[250px] font-body">
+            increase in online interaction and service accessibility.
+          </p>
+        </div>
 
-              {/* SECONDARY CTA (same theme, smaller) */}
-              <button
-                className="
-            group flex items-center gap-3
-            font-heading
-            bg-gradient-to-br from-[#6318C6] via-[#8B22CD] to-[#A526D1]
-            px-8 py-4
-            rounded-full
-            text-sm font-semibold
-            hover:brightness-110
-            active:scale-95
-            transition-all
-            shadow-[0_8px_24px_rgba(139,44,245,0.3)]
-          "
-              >
-                View Case Study
-              </button>
-            </div>
+        {/* SECONDARY CTA */}
+        <button className="group flex items-center gap-2 sm:gap-3 font-heading bg-gradient-to-br from-[#6318C6] via-[#8B22CD] to-[#A526D1] px-6 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-base font-semibold hover:brightness-110 active:scale-95 transition-all shadow-[0_8px_24px_rgba(139,44,245,0.3)]">
+          View Case Study
+        </button>
+      </div>
 
-            {/* RIGHT IMAGE */}
-            <div className="lg:col-span-7 relative group">
-              <div className="rounded-[45px] overflow-hidden border border-white/10 bg-gradient-to-br from-white/5 to-transparent p-4 shadow-2xl">
-                <div className="relative overflow-hidden rounded-[32px]">
-                  <img
-                    key={activeTab}
-                    src={categoryData[activeTab].image}
-                    alt={categoryData[activeTab].title}
-                    className="w-full h-[450px] lg:h-[550px] object-cover transition-all duration-700 ease-out group-hover:scale-105 animate-slideUp"
-                  />
-                </div>
-              </div>
-              <div className="absolute -inset-4 bg-purple-600/10 blur-[100px] -z-10 rounded-full" />
-            </div>
+      {/* RIGHT IMAGE */}
+      <div className="lg:col-span-7 relative group">
+        <div className="rounded-[35px] sm:rounded-[45px] overflow-hidden border border-white/10 bg-gradient-to-br from-white/5 to-transparent p-3 sm:p-4 shadow-2xl">
+          <div className="relative overflow-hidden rounded-[25px] sm:rounded-[32px]">
+            <img
+              key={activeTab}
+              src={categoryData[activeTab].image}
+              alt={categoryData[activeTab].title}
+              className="w-full h-[250px] sm:h-[350px] md:h-[450px] lg:h-[550px] object-cover transition-all duration-700 ease-out group-hover:scale-105 animate-slideUp"
+            />
           </div>
         </div>
-      </section>
+        <div className="absolute -inset-4 sm:-inset-4 bg-purple-600/10 blur-[60px] sm:blur-[100px] -z-10 rounded-full" />
+      </div>
+    </div>
+  </div>
+</section>
+
 
       <section className="bg-[#050505] py-24 text-white font-body">
         <div className="container mx-auto px-6 lg:px-16 border-t border-white/10 pt-16">
