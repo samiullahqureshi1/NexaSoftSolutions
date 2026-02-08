@@ -98,7 +98,7 @@ const AboutUs = () => {
 const socialLinks = [
   // { icon: FaBehance, url: "https://www.behance.net/yourusername" },
   { icon: FaInstagram, url: "https://www.instagram.com/thenexasoft.solutions/" },
-  { icon: FaFacebookF, url: "https://www.facebook.com/yourusername" },
+  { icon: FaFacebookF, url: "https://www.facebook.com/people/NexaSoft-Solutions/61579774006246/" },
   { icon: FaLinkedinIn, url: "https://www.linkedin.com/company/nexasoft-solutions/" },
   { icon: SiUpwork, url: "https://www.upwork.com/agencies/1961784720708002202/" },
   { icon: SiFiverr, url: "https://www.fiverr.com/yourusername" },
