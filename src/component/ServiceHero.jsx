@@ -61,12 +61,7 @@ const ServiceHero = () => {
       image:
         "https://cdn.shopify.com/s/files/1/0654/1210/4348/files/difc-website.gif?v=1769150548",
     },
-    "ai-machine-learning": {
-      title: "Predictive Analytics for Retail",
-      desc: "Developed a Gen-AI recommendation engine that analyzes customer behavior patterns to predict future purchases, driving a 25% uplift in repeat customer rate.",
-      image:
-        "https://cdn.shopify.com/s/files/1/0654/1210/4348/files/difc-website.gif?v=1769150548",
-    },
+   
     "cloud-solutions": {
       title: "Azure Enterprise Migration",
       desc: "Seamless cloud migration of legacy infrastructure for a financial institution. Enhanced security protocols and established a 99.99% uptime architecture using multi-region failovers.",
@@ -213,7 +208,7 @@ const ServiceHero = () => {
 const socialLinks = [
   // { icon: FaBehance, url: "https://www.behance.net/yourusername" },
   { icon: FaInstagram, url: "https://www.instagram.com/thenexasoft.solutions/" },
-  { icon: FaFacebookF, url: "https://www.facebook.com/yourusername" },
+  { icon: FaFacebookF, url: "https://www.facebook.com/people/NexaSoft-Solutions/61579774006246/" },
   { icon: FaLinkedinIn, url: "https://www.linkedin.com/company/nexasoft-solutions/" },
   { icon: SiUpwork, url: "https://www.upwork.com/agencies/1961784720708002202/" },
   { icon: SiFiverr, url: "https://www.fiverr.com/yourusername" },
@@ -221,161 +216,222 @@ const socialLinks = [
 ];
   return (
     <>
-    <section className="relative min-h-screen bg-[#050505] flex items-center overflow-hidden text-white">
-  {/* BACKGROUND */}
-  <div className="absolute inset-0 z-0">
-    <div
-      className="absolute inset-0 bg-cover bg-center scale-110 blur-md brightness-[0.45]"
-      style={{ backgroundImage: `url(${data.image})` }}
-    />
-    <div className="absolute inset-0 bg-black/50" />
-    <div className="absolute inset-0 bg-gradient-to-l from-purple-900/40 via-transparent to-transparent" />
-  </div>
-
-  {/* LEFT SOCIAL (XL ONLY) */}
-  <div className="fixed left-6 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-4 z-40">
-    {socialLinks.map(({ icon: Icon, url }, i) => (
-      <a
-        key={i}
-        href={url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="w-9 h-9 rounded-full bg-black/80 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-purple-500/30 transition"
-      >
-        <Icon size={14} />
-      </a>
-    ))}
-  </div>
-
-  {/* CONTENT */}
-  <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 py-24">
-    <div className="grid lg:grid-cols-2 gap-16 xl:gap-28 items-center">
-      
-      {/* TEXT */}
-      <div className="max-w-xl">
-        <div className="flex items-center gap-3 mb-6">
-          <span className="w-2.5 h-2.5 rounded-full bg-purple-500 shadow-[0_0_12px_#a855f7]" />
-          <span className="text-xs uppercase tracking-wide text-gray-300">
-            {data.tag}
-          </span>
+      <section className="relative min-h-screen bg-[#050505] flex items-center overflow-hidden text-white">
+        {/* BACKGROUND */}
+        <div className="absolute inset-0 z-0">
+          <div
+            className="absolute inset-0 bg-cover bg-center scale-110 blur-md brightness-[0.45]"
+            style={{ backgroundImage: `url(${data.image})` }}
+          />
+          <div className="absolute inset-0 bg-black/40" />
+          <div className="absolute inset-0 bg-gradient-to-l from-purple-900/40 via-transparent to-transparent" />
         </div>
 
-        <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-headingAlt leading-tight mb-6">
-          {(() => {
-            const words = data.title.split(" ");
-            const mid = Math.ceil(words.length / 2);
-            return (
-              <>
-                <span className="block">{words.slice(0, mid).join(" ")}</span>
-                <span className="block">{words.slice(mid).join(" ")}</span>
-              </>
-            );
-          })()}
-        </h1>
+        {/* LEFT SOCIAL */}
+          <div className="fixed left-6 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-4 z-40">
+      {socialLinks.map(({ icon: Icon, url }, i) => (
+        <a
+          key={i}
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-9 h-9 rounded-full bg-black border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-purple-500/30 transition-all"
+        >
+          <Icon size={14} />
+        </a>
+      ))}
+    </div>
 
-        <p className="text-base md:text-lg text-gray-400 leading-relaxed">
-          {data.description}
-        </p>
-      </div>
-
-      {/* FORM */}
-      <div className="flex justify-center lg:justify-end mt-2">
-        <div className="w-full max-w-[460px] bg-black/40 backdrop-blur-xl border border-white/20 rounded-[36px] p-8 sm:p-10 shadow-2xl">
-          <h3 className="text-lg sm:text-xl font-semibold mb-6">
-            Have any questions?
-          </h3>
-
-          <div className="space-y-5">
-            {["Name*", "Email*"].map((ph, i) => (
-              <input
-                key={i}
-                placeholder={ph}
-                className="w-full bg-transparent border border-white/20 rounded-xl px-5 py-3.5 text-white placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500/40 transition"
-              />
-            ))}
-
-            {/* PHONE */}
-            <div className="relative">
-              <div className="absolute left-4 top-1/2 -translate-y-1/2 flex items-center gap-2">
-                <img
-                  src={`https://flagcdn.com/w20/${selected.iso}.png`}
-                  className="w-5 h-3 rounded-sm"
-                  alt={selected.name}
-                />
-                <span className="text-sm">{selected.code}</span>
-                <div className="h-5 w-px bg-white/70 mx-2" />
-                <select
-                  value={selected.code}
-                  onChange={(e) =>
-                    setSelected(
-                      countries.find((c) => c.code === e.target.value)
-                    )
-                  }
-                  className="absolute text-black inset-0 opacity-0 cursor-pointer"
-                >
-                  {countries.map((c, idx) => (
-                    <option key={idx} value={c.code}>
-                      {c.name} ({c.code})
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <input
-                placeholder="Phone No*"
-                className="w-full bg-transparent border border-white/20 rounded-xl pl-28 pr-5 py-3.5 text-white placeholder-gray-400 focus:border-purple-500 focus:ring-1 focus:ring-purple-500/40 transition"
-              />
-            </div>
-
-            {/* BUDGET */}
+        {/* CONTENT */}
+        <div className="relative z-10 container mx-auto px-6 lg:px-16 py-20">
+          <div className="grid lg:grid-cols-2 gap-14 xl:gap-24 items-center">
+            {/* TEXT */}
             <div>
-              <div className="flex justify-between text-[10px] uppercase tracking-wider mb-2 text-gray-300">
-                <span>$1K</span>
-                <span className="text-purple-400 font-semibold">
-                  Budget: ${Number(budget).toLocaleString()}
+              <div className="flex items-center gap-3 mb-8">
+                <span className="w-2.5 h-2.5 rounded-full bg-purple-500 shadow-[0_0_12px_#a855f7]" />
+                <span className="text-xs uppercase tracking-wide text-gray-300">
+                  {data.tag}
                 </span>
-                <span>$50K</span>
               </div>
 
-              <div className="relative h-2 rounded-full bg-white/10">
-                <div
-                  className="absolute h-full rounded-full bg-purple-500"
-                  style={{ width: `${(budget / 50000) * 100}%` }}
-                />
-                <input
-                  type="range"
-                  min="5000"
-                  max="50000"
-                  value={budget}
-                  onChange={(e) => setBudget(e.target.value)}
-                  className="absolute inset-0 w-full appearance-none bg-transparent cursor-pointer
-                  [&::-webkit-slider-thumb]:appearance-none
-                  [&::-webkit-slider-thumb]:h-4
-                  [&::-webkit-slider-thumb]:w-4
-                  [&::-webkit-slider-thumb]:rounded-full
-                  [&::-webkit-slider-thumb]:bg-purple-500"
-                />
-              </div>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-headingAlt leading-[1.15]  mb-6">
+                {(() => {
+                  const words = data.title.split(" ");
+                  const mid = Math.ceil(words.length / 2);
+                  return (
+                    <>
+                      <span className="block">
+                        {words.slice(0, mid).join(" ")}
+                      </span>
+                      <span className="block">
+                        {words.slice(mid).join(" ")}
+                      </span>
+                    </>
+                  );
+                })()}
+              </h1>
+
+              <p className="text-base md:text-lg text-gray-400 max-w-xl leading-relaxed">
+                {data.description}
+              </p>
             </div>
 
-            <textarea
-              rows="3"
-              placeholder="Tell us about your project"
-              className="w-full bg-transparent border border-white/20 rounded-2xl px-5 py-3.5 text-white placeholder-gray-400 resize-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500/40 transition"
-            />
+            {/* FORM */}
+            <div className="flex justify-center lg:justify-end">
+              <div className="w-full max-w-[480px] bg-black/30 backdrop-blur-md border border-white/20 rounded-[40px] p-8 md:p-12 shadow-2xl">
+                <h3 className="text-xl md:text-2xl font-semibold mb-8">
+                  Have any questions?
+                </h3>
 
-            <button className="w-full py-4 rounded-full bg-gradient-to-br from-purple-600 via-purple-700 to-purple-800 font-semibold hover:brightness-110 active:scale-95 transition shadow-xl">
-              Submit
-            </button>
+                <div className="space-y-5">
+                  {["Name*", "Email*"].map((ph, i) => (
+                    <input
+                      key={i}
+                      placeholder={ph}
+                      className="
+                  w-full bg-transparent
+                  border border-white/20
+                  rounded-xl px-6 py-4
+                  text-white placeholder-gray-400
+                  focus:border-purple-500 focus:ring-1 focus:ring-purple-500/40
+                  transition
+                "
+                    />
+                  ))}
+
+                  {/* PHONE */}
+                  <div className="relative">
+                    {/* COUNTRY SELECT */}
+                    <div className="absolute left-4 top-1/2 -translate-y-1/2 flex items-center gap-2 pr-3">
+                      {/* FLAG */}
+                      <img
+                        src={`https://flagcdn.com/w20/${selected.iso}.png`}
+                        className="w-5 h-3 rounded-sm"
+                        alt={selected.name}
+                      />
+
+                      {/* CODE */}
+                      <span className="text-sm text-white">
+                        {selected.code}
+                      </span>
+
+                      {/* CLEAN DIVIDER */}
+                      <div className="h-5 w-px bg-white/20 mx-2" />
+
+                      {/* HIDDEN SELECT */}
+                      <select
+                        value={selected.code}
+                        onChange={(e) =>
+                          setSelected(
+                            countries.find((c) => c.code === e.target.value),
+                          )
+                        }
+                        className="
+        absolute inset-0 opacity-0 cursor-pointer bg-gray-800
+      "
+                      >
+                        {countries.map((c, idx) => (
+                          <option key={idx} value={c.code}>
+                            {c.name} ({c.code})
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    {/* PHONE INPUT */}
+                    <input
+                      placeholder="Phone No*"
+                      className="
+      w-full bg-transparent
+      border border-white/20
+      rounded-xl pl-28 pr-6 py-4
+      text-white placeholder-gray-400
+      focus:border-purple-500 focus:ring-1 focus:ring-purple-500/40
+      transition
+    "
+                    />
+                  </div>
+
+                  {/* BUDGET */}
+                  <div>
+                    {/* LABELS */}
+                    <div className="flex justify-between text-[10px] uppercase tracking-wider mb-3 text-gray-300">
+                      <span>USD 1K</span>
+                      <span className="text-purple-400 font-bold">
+                        Budget: {Number(budget).toLocaleString()}
+                      </span>
+                      <span>USD 50K</span>
+                    </div>
+
+                    {/* SLIDER */}
+                    <div className="relative h-2 rounded-full bg-white/10">
+                      {/* PROGRESS */}
+                      <div
+                        className="absolute top-0 left-0 h-full rounded-full bg-purple-500 transition-all duration-300"
+                        style={{ width: `${(budget / 50000) * 100}%` }}
+                      />
+
+                      {/* RANGE INPUT */}
+                      <input
+                        type="range"
+                        min="5000"
+                        max="50000"
+                        value={budget}
+                        onChange={(e) => setBudget(e.target.value)}
+                        className="
+        absolute inset-0 w-full
+        bg-transparent appearance-none
+        cursor-pointer
+        [&::-webkit-slider-thumb]:appearance-none
+        [&::-webkit-slider-thumb]:h-5
+        [&::-webkit-slider-thumb]:w-5
+        [&::-webkit-slider-thumb]:rounded-full
+        [&::-webkit-slider-thumb]:bg-purple-500
+        [&::-webkit-slider-thumb]:shadow-[0_0_15px_#a855f7]
+        [&::-webkit-slider-thumb]:border-2
+        [&::-webkit-slider-thumb]:border-[#050505]
+      "
+                      />
+                    </div>
+                  </div>
+
+                  <textarea
+                    rows="2"
+                    placeholder="Tell us about your project"
+                    className="
+                w-full bg-transparent
+                border border-white/20
+                rounded-2xl px-6 py-4
+                text-white placeholder-gray-400
+                focus:border-purple-500 focus:ring-1 focus:ring-purple-500/40
+                resize-none transition
+              "
+                  />
+
+                  {/* PRIMARY CTA */}
+                  <button
+                    className="
+                w-full
+                bg-gradient-to-br from-[#6318C6] via-[#8B22CD] to-[#A526D1]
+                py-4 rounded-full
+                text-sm font-semibold
+                hover:brightness-110
+                active:scale-95
+                transition-all
+                shadow-[0_10px_30px_rgba(139,44,245,0.35)]
+              "
+                  >
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
 
- 
-</section>
-
+        {/* RIGHT CONTACT */}
+       
+      </section>
 
       {section && (
         <section className="bg-[#050505] py-32 relative overflow-hidden font-body text-white">
@@ -455,212 +511,233 @@ const socialLinks = [
         </section>
       )}
 
-      <section className="bg-[#050505] py-16 md:py-24 text-white relative font-body">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-16">
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-6 md:gap-8">
-          <div>
-            <div className="flex items-center gap-2 mb-4">
-              <span className="w-2.5 h-2.5 rounded-full bg-purple-500 shadow-[0_0_12px_#a855f7]" />
-              <span className="text-xs font-heading font-semibold tracking-[0.2em] uppercase text-gray-400">
-                Our Work
-              </span>
+      <section className="bg-[#050505] py-24 text-white relative font-body">
+        <div className="container mx-auto px-6 lg:px-16">
+          {/* Header */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <span className="w-2.5 h-2.5 rounded-full bg-purple-500 shadow-[0_0_12px_#a855f7]" />
+                <span className="text-xs font-heading font-semibold tracking-[0.2em] uppercase text-gray-400">
+                  Our Work
+                </span>
+              </div>
+
+              <h2 className="text-5xl md:text-7xl font-headingAlt font-light leading-tight">
+                10+ Years Exp but <br /> Countless Innovations
+              </h2>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-headingAlt font-light leading-tight">
-              10+ Years Exp but <br /> Countless Innovations
-            </h2>
-          </div>
-
-          {/* PRIMARY CTA */}
-          <button className="font-heading bg-gradient-to-br from-[#6318C6] via-[#8B22CD] to-[#A526D1] text-white px-8 sm:px-10 py-3 sm:py-3.5 rounded-full text-sm sm:text-base font-semibold shadow-[0_10px_30px_rgba(139,44,245,0.35)] hover:brightness-110 active:scale-95 transition-all">
-            View More
-          </button>
-        </div>
-
-        {/* Tabs */}
-        <div className="flex flex-wrap items-center gap-x-6 sm:gap-x-10 gap-y-4 sm:gap-y-6 mb-12 sm:mb-20 border-b border-white/5 pb-6 sm:pb-8 font-heading">
-          {Object.keys(categoryData).map((key) => {
-            const isActive = activeTab === key;
-            return (
-              <button
-                key={key}
-                onClick={() => setActiveTab(key)}
-                className={`group flex items-center gap-2 text-base sm:text-lg capitalize transition-all duration-300 ${
-                  isActive
-                    ? "text-white"
-                    : "text-gray-500 hover:text-gray-300"
-                }`}
-              >
-                <FiChevronRight
-                  className={`transition-all duration-300 ${
-                    isActive
-                      ? "opacity-100 translate-x-0 text-purple-400"
-                      : "opacity-0 -translate-x-2"
-                  }`}
-                />
-                {key.replace(/-/g, " ")}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center transition-all duration-500">
-          {/* LEFT */}
-          <div className="lg:col-span-5 space-y-6 sm:space-y-8 animate-fadeIn">
-            <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-headingAlt font-light leading-tight">
-              {categoryData[activeTab].title}
-            </h3>
-
-            <p className="text-gray-400 leading-relaxed text-base sm:text-lg max-w-full sm:max-w-lg font-body">
-              {categoryData[activeTab].desc}
-            </p>
-
-            <div className="space-y-4">
-              <h4 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-headingAlt font-light text-white">
-                75%
-              </h4>
-              <p className="text-gray-400 text-base sm:text-lg leading-snug max-w-[250px] font-body">
-                increase in online interaction and service accessibility.
-              </p>
-            </div>
-
-            {/* SECONDARY CTA */}
-            <button className="group flex items-center gap-2 sm:gap-3 font-heading bg-gradient-to-br from-[#6318C6] via-[#8B22CD] to-[#A526D1] px-6 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-base font-semibold hover:brightness-110 active:scale-95 transition-all shadow-[0_8px_24px_rgba(139,44,245,0.3)]">
-              View Case Study
+            {/* PRIMARY CTA */}
+            <button
+            onClick={()=>{
+              navigate('/case-studies')
+            }}
+              className="
+          font-heading
+          bg-gradient-to-br from-[#6318C6] via-[#8B22CD] to-[#A526D1]
+          text-white
+          px-10 py-3.5
+          rounded-full
+          text-sm font-semibold
+          shadow-[0_10px_30px_rgba(139,44,245,0.35)]
+          hover:brightness-110
+          active:scale-95
+          transition-all
+        "
+            >
+              View More
             </button>
           </div>
 
-          {/* RIGHT IMAGE */}
-          <div className="lg:col-span-7 relative group">
-            <div className="rounded-[35px] sm:rounded-[45px] overflow-hidden border border-white/10 bg-gradient-to-br from-white/5 to-transparent p-3 sm:p-4 shadow-2xl">
-              <div className="relative overflow-hidden rounded-[25px] sm:rounded-[32px]">
-                <img
-                  key={activeTab}
-                  src={categoryData[activeTab].image}
-                  alt={categoryData[activeTab].title}
-                  className="w-full h-[250px] sm:h-[350px] md:h-[450px] lg:h-[550px] object-cover transition-all duration-700 ease-out group-hover:scale-105 animate-slideUp"
-                />
-              </div>
-            </div>
-            <div className="absolute -inset-4 sm:-inset-4 bg-purple-600/10 blur-[60px] sm:blur-[100px] -z-10 rounded-full" />
-          </div>
-        </div>
-      </div>
-    </section>
+          {/* Tabs */}
+        <div className="relative mb-12 md:mb-20">
+  {/* Mobile Fade Mask: Helps indicate more content to the right */}
+  <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[#050505] to-transparent z-10 pointer-events-none md:hidden" />
 
+  <div 
+    className="
+      flex items-center 
+      gap-x-8 md:gap-x-10 
+      pb-4 md:pb-8 
+      border-b border-white/5 
+      font-heading
+      /* Mobile: Single line scrolling */
+      overflow-x-auto 
+      whitespace-nowrap 
+      scrollbar-hide 
+      snap-x snap-mandatory
+    "
+  >
+    {Object.keys(categoryData).map((key) => {
+      const isActive = activeTab === key;
+      return (
+        <button
+          key={key}
+          onClick={() => setActiveTab(key)}
+          className={`
+            group flex items-center gap-2 
+            text-base md:text-lg capitalize
+            transition-all duration-300
+            snap-start scroll-ml-6
+            flex-shrink-0
+            ${isActive ? "text-white font-medium" : "text-gray-500 hover:text-gray-300"}
+          `}
+        >
+          <FiChevronRight
+            className={`
+              transition-all duration-300
+              ${
+                isActive
+                  ? "opacity-100 translate-x-0 text-purple-400"
+                  : "opacity-0 -translate-x-2 w-0" /* Collapse width when hidden */
+              }
+            `}
+          />
+          <span className={`${isActive ? "translate-x-0" : "-translate-x-2 md:translate-x-0"} transition-transform duration-300`}>
+             {key.replace(/-/g, " ")}
+          </span>
+        </button>
+      );
+    })}
+  </div>
+</div>
 
-      <section className="bg-[#050505] py-24 text-white font-body">
-        <div className="container mx-auto px-6 lg:px-16 border-t border-white/10 pt-16">
-          <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
-            {/* CARD 1 */}
-            <div className="group cursor-pointer">
-              <div className="relative overflow-hidden rounded-[40px] mb-8 bg-[#111] aspect-[4/3] border border-white/5">
-                <img
-                  src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80"
-                  alt="DP World Project"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors" />
-              </div>
+          {/* Content */}
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center transition-all duration-500">
+            {/* LEFT */}
+            <div className="lg:col-span-5 space-y-10 animate-fadeIn">
+              <h3 className="text-4xl md:text-5xl font-headingAlt font-light leading-tight">
+                {categoryData[activeTab].title}
+              </h3>
 
-              <div className="px-2 space-y-6">
-                <h3 className="text-3xl md:text-5xl font-headingAlt font-light leading-tight">
-                  Engineered DP World for Global Reach
-                </h3>
+              <p className="text-gray-400 leading-relaxed text-lg max-w-lg font-body">
+                {categoryData[activeTab].desc}
+              </p>
 
-                <p className="text-gray-400 text-lg leading-relaxed font-body">
-                  Our team of 50+ web development experts partnered with DP
-                  World to engineer a high-performance, customer-focused
-                  website. Built with speed, UX, and security in mind, the
-                  platform achieved 98% speed optimization, 27% bounce rate, 67%
-                  user engagement, and 100% security.
+              <div className="space-y-4">
+                <h4 className="text-6xl md:text-7xl font-headingAlt font-light text-white">
+                  75%
+                </h4>
+                <p className="text-gray-400 text-lg leading-snug max-w-[250px] font-body">
+                  increase in online interaction and service accessibility.
                 </p>
+              </div>
 
-                <div className="flex items-center justify-between pt-4">
-                  <div className="flex items-center gap-4">
-                    <span className="text-5xl md:text-6xl font-headingAlt font-light">
-                      120%
-                    </span>
-                    <p className="text-xs text-gray-400 uppercase tracking-wider max-w-[140px]">
-                      A surge in website visitors during key events.
-                    </p>
-                  </div>
+              {/* SECONDARY CTA (same theme, smaller) */}
+              <button
+                className="
+            group flex items-center gap-3
+            font-heading
+            bg-gradient-to-br from-[#6318C6] via-[#8B22CD] to-[#A526D1]
+            px-8 py-4
+            rounded-full
+            text-sm font-semibold
+            hover:brightness-110
+            active:scale-95
+            transition-all
+            shadow-[0_8px_24px_rgba(139,44,245,0.3)]
+          "
+              >
+                View Case Study
+              </button>
+            </div>
 
-                  {/* CTA */}
-                  <button
-                    className="
-                font-heading
-                bg-gradient-to-br from-[#6318C6] via-[#8B22CD] to-[#A526D1]
-                px-8 py-3 rounded-full
-                text-sm font-semibold
-                hover:brightness-110
-                active:scale-95
-                transition-all
-                shadow-[0_8px_24px_rgba(139,44,245,0.35)]
-              "
-                  >
-                    View Case Study
-                  </button>
+            {/* RIGHT IMAGE */}
+            <div className="lg:col-span-7 relative group">
+              <div className="rounded-[45px] overflow-hidden border border-white/10 bg-gradient-to-br from-white/5 to-transparent p-4 shadow-2xl">
+                <div className="relative overflow-hidden rounded-[32px]">
+                  <img
+                    key={activeTab}
+                    src={categoryData[activeTab].image}
+                    alt={categoryData[activeTab].title}
+                    className="w-full h-[450px] lg:h-[550px] object-cover transition-all duration-700 ease-out group-hover:scale-105 animate-slideUp"
+                  />
                 </div>
               </div>
-            </div>
-
-            {/* CARD 2 */}
-            <div className="group cursor-pointer">
-              <div className="relative overflow-hidden rounded-[40px] mb-8 bg-[#111] aspect-[4/3] border border-white/5">
-                <img
-                  src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=800&q=80"
-                  alt="Sephora Project"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-              </div>
-
-              <div className="px-2 space-y-6">
-                <h3 className="text-3xl md:text-5xl font-headingAlt font-light leading-tight">
-                  Sephora – Beauty brand, Powered by Tech
-                </h3>
-
-                <p className="text-gray-400 text-lg leading-relaxed font-body">
-                  Our designers and developers built a sleek, user-centric
-                  eCommerce experience for Sephora. The platform delivered 98%
-                  mobile optimization, 85% engagement, a 36% rise in organic
-                  traffic, and secure browsing across all touchpoints.
-                </p>
-
-                <div className="flex items-center justify-between pt-4">
-                  <div className="flex items-center gap-4">
-                    <span className="text-5xl md:text-6xl font-headingAlt font-light">
-                      110%
-                    </span>
-                    <p className="text-xs text-gray-400 uppercase tracking-wider max-w-[140px]">
-                      Increase in online shopping and retail inquiries.
-                    </p>
-                  </div>
-
-                  {/* CTA */}
-                  <button
-                    className="
-                font-heading
-                bg-gradient-to-br from-[#6318C6] via-[#8B22CD] to-[#A526D1]
-                px-8 py-3 rounded-full
-                text-sm font-semibold
-                hover:brightness-110
-                active:scale-95
-                transition-all
-                shadow-[0_8px_24px_rgba(139,44,245,0.35)]
-              "
-                  >
-                    View Case Study
-                  </button>
-                </div>
-              </div>
+              <div className="absolute -inset-4 bg-purple-600/10 blur-[100px] -z-10 rounded-full" />
             </div>
           </div>
         </div>
       </section>
 
+     <section className="bg-[#050505] py-16 md:py-24 text-white font-body overflow-hidden">
+  <div className="container mx-auto px-6 lg:px-16 border-t border-white/10 pt-12 md:pt-16">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-24">
+      
+      {/* CASE STUDY CARD */}
+      {[
+        {
+          title: "Engineered DP World for Global Reach",
+          img: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80",
+          stat: "120%",
+          desc: "Our team of 50+ web development experts partnered with DP World to engineer a high-performance, customer-focused website.",
+          sub: "A surge in website visitors during key events."
+        },
+        {
+          title: "Sephora – Beauty brand, Powered by Tech",
+          img: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=800&q=80",
+          stat: "110%",
+          desc: "Our designers and developers built a sleek, user-centric eCommerce experience for Sephora delivering mobile optimization.",
+          sub: "Increase in online shopping and retail inquiries."
+        }
+      ].map((item, index) => (
+        <div key={index} className="group cursor-pointer flex flex-col">
+          {/* Image Container */}
+          <div className="relative overflow-hidden rounded-[32px] md:rounded-[40px] mb-6 md:mb-8 bg-[#111] aspect-[4/3] border border-white/5">
+            <img
+              src={item.img}
+              alt={item.title}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors" />
+          </div>
+
+          {/* Content */}
+          <div className="px-1 md:px-2 flex-grow space-y-4 md:space-y-6">
+            <h3 className="text-3xl lg:text-5xl font-headingAlt font-light leading-[1.1] tracking-tight transition-colors group-hover:text-purple-400">
+              {item.title}
+            </h3>
+
+            <p className="text-gray-400 text-base md:text-lg leading-relaxed font-body line-clamp-3 md:line-clamp-none">
+              {item.desc}
+            </p>
+
+            {/* Stats & CTA Container */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pt-4 border-t border-white/5">
+              <div className="flex items-center gap-4">
+                <span className="text-5xl md:text-6xl font-headingAlt font-light text-white">
+                  {item.stat}
+                </span>
+                <p className="text-[10px] md:text-xs text-gray-500 uppercase tracking-[0.15em] max-w-[120px] leading-tight">
+                  {item.sub}
+                </p>
+              </div>
+
+              <button
+                className="
+                  w-full sm:w-auto
+                  font-heading
+                  bg-gradient-to-br from-[#6318C6] via-[#8B22CD] to-[#A526D1]
+                  px-8 py-4 sm:py-3 rounded-full
+                  text-sm font-semibold text-white
+                  hover:brightness-110
+                  active:scale-95
+                  transition-all
+                  shadow-[0_8px_24px_rgba(139,44,245,0.25)]
+                  whitespace-nowrap
+                "
+              >
+                View Case Study
+              </button>
+            </div>
+          </div>
+        </div>
+      ))}
+
+    </div>
+  </div>
+</section>
       <section className="bg-[#050505] py-24 text-white relative overflow-hidden font-body">
         <div className="container mx-auto px-6  text-center relative z-10 border-t border-white/10 pt-12">
           {/* Heading */}
@@ -748,7 +825,7 @@ const socialLinks = [
         <div className="fixed right-0 top-1/2 -translate-y-1/2 z-50">
           <button
             onClick={handleGetQuote}
-            className="font-sans  hidden sm:flex  bg-gradient-to-br from-[#6318C6] via-[#8B22CD] to-[#A526D1] text-white py-8 px-3 rounded-l-[20px] shadow-[0_0_30px_rgba(139,44,245,0.3)] transition-all group"
+            className="font-sans    bg-gradient-to-br from-[#6318C6] via-[#8B22CD] to-[#A526D1] text-white py-8 px-3 rounded-l-[20px] shadow-[0_0_30px_rgba(139,44,245,0.3)] transition-all group"
           >
             <span className="[writing-mode:vertical-lr] rotate-180 text-[11px] font-semibold tracking-[0.2em] uppercase">
               Get A Quote!

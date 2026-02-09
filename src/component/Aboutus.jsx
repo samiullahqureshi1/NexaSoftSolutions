@@ -95,15 +95,27 @@ const AboutUs = () => {
       setIsModalOpen(true); // desktop → modal
     }
   };
-const socialLinks = [
-  // { icon: FaBehance, url: "https://www.behance.net/yourusername" },
-  { icon: FaInstagram, url: "https://www.instagram.com/thenexasoft.solutions/" },
-  { icon: FaFacebookF, url: "https://www.facebook.com/people/NexaSoft-Solutions/61579774006246/" },
-  { icon: FaLinkedinIn, url: "https://www.linkedin.com/company/nexasoft-solutions/" },
-  { icon: SiUpwork, url: "https://www.upwork.com/agencies/1961784720708002202/" },
-  { icon: SiFiverr, url: "https://www.fiverr.com/yourusername" },
-  // { icon: FaYoutube, url: "https://www.youtube.com/@yourchannel" },
-];
+  const socialLinks = [
+    // { icon: FaBehance, url: "https://www.behance.net/yourusername" },
+    {
+      icon: FaInstagram,
+      url: "https://www.instagram.com/thenexasoft.solutions/",
+    },
+    {
+      icon: FaFacebookF,
+      url: "https://www.facebook.com/people/NexaSoft-Solutions/61579774006246/",
+    },
+    {
+      icon: FaLinkedinIn,
+      url: "https://www.linkedin.com/company/nexasoft-solutions/",
+    },
+    {
+      icon: SiUpwork,
+      url: "https://www.upwork.com/agencies/1961784720708002202/",
+    },
+    { icon: SiFiverr, url: "https://www.fiverr.com/yourusername" },
+    // { icon: FaYoutube, url: "https://www.youtube.com/@yourchannel" },
+  ];
   return (
     <>
       <section className="relative min-h-screen w-full overflow-hidden text-white font-body">
@@ -167,56 +179,20 @@ const socialLinks = [
           </div>
 
           {/* Logos */}
-          <div className="relative mt-40 overflow-hidden">
-            <div className="pointer-events-none absolute left-0 top-0 h-full w-32 bg-gradient-to-r from-black to-transparent z-10" />
-            <div className="pointer-events-none absolute right-0 top-0 h-full w-32 bg-gradient-to-l from-black to-transparent z-10" />
-
-            <div className="flex w-max animate-marquee gap-20 opacity-60">
-              {[...logos, ...logos].map((logo, i) => (
-                <img
-                  key={i}
-                  src={logo}
-                  alt="brand"
-                  className="h-10 grayscale hover:grayscale-0 transition"
-                />
-              ))}
-            </div>
-          </div>
         </div>
 
         {/* Left Socials */}
-         <div className="fixed left-6 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-4 z-40">
-      {socialLinks.map(({ icon: Icon, url }, i) => (
-        <a
-          key={i}
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-9 h-9 rounded-full bg-black border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-purple-500/30 transition-all"
-        >
-          <Icon size={14} />
-        </a>
-      ))}
-    </div>
-
-        {/* Right Contact */}
-        <div className="fixed right-6 bottom-32 hidden xl:flex flex-col gap-3 z-40">
-          {[FaWhatsapp, HiOutlineMail, HiOutlinePhone].map((Icon, idx) => (
-            <div
-              key={idx}
-              className="
-          w-10 h-10 rounded-full
-          bg-black/80
-          border border-purple-500/20
-          flex items-center justify-center
-          text-white
-          hover:bg-purple-600
-          hover:shadow-[0_0_15px_rgba(168,85,247,0.4)]
-          transition
-        "
+        <div className="fixed left-6 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-4 z-40">
+          {socialLinks.map(({ icon: Icon, url }, i) => (
+            <a
+              key={i}
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-9 h-9 rounded-full bg-black border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-purple-500/30 transition-all"
             >
-              <Icon size={18} />
-            </div>
+              <Icon size={14} />
+            </a>
           ))}
         </div>
       </section>

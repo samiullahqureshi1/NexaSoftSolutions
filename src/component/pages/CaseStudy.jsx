@@ -13,6 +13,7 @@ import {
 import { HiOutlineMail, HiOutlinePhone } from "react-icons/hi";
 import { useState } from "react";
 import { ContactModal } from "../ContactModal";
+import { SiFiverr, SiUpwork } from "react-icons/si";
 const CaseStudy = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { id } = useParams();
@@ -28,7 +29,15 @@ const CaseStudy = () => {
   }
 
   const { hero, testimonialSection } = project.caseStudy;
-
+const socialLinks = [
+  // { icon: FaBehance, url: "https://www.behance.net/yourusername" },
+  { icon: FaInstagram, url: "https://www.instagram.com/thenexasoft.solutions/" },
+  { icon: FaFacebookF, url: "https://www.facebook.com/people/NexaSoft-Solutions/61579774006246/" },
+  { icon: FaLinkedinIn, url: "https://www.linkedin.com/company/nexasoft-solutions/" },
+  { icon: SiUpwork, url: "https://www.upwork.com/agencies/1961784720708002202/" },
+  { icon: SiFiverr, url: "https://www.fiverr.com/yourusername" },
+  // { icon: FaYoutube, url: "https://www.youtube.com/@yourchannel" },
+];
   return (
     <div className=" text-white">
       <section className="relative min-h-screen px-8 lg:px-32 flex items-center overflow-hidden bg-black">
@@ -356,42 +365,21 @@ const CaseStudy = () => {
         {/* Modal Component */}
         <ContactModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
       </div>
-      <div className="fixed left-6 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-4 z-40">
-        {[FaBehance, FaInstagram, FaFacebookF, FaLinkedinIn, FaYoutube].map(
-          (Icon, idx) => (
-            <a
-              key={idx}
-              href="#"
-              className="animate-borderGlow w-9 h-9 rounded-full bg-black border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-purple-500 transition-all"
-            >
-              <Icon size={14} />
-            </a>
-          ),
-        )}
-      </div>
-      <div className="fixed right-6 bottom-32 hidden xl:flex flex-col gap-3 z-40">
-        {[FaWhatsapp, HiOutlineMail, HiOutlinePhone].map((Icon, idx) => (
-          <div
-            key={idx}
-            className="animate-borderGlow w-10 h-10 bg-black/80 border border-white/10 rounded-full flex items-center justify-center text-white cursor-pointer hover:bg-purple-600 transition-colors"
-          >
-            <Icon size={18} />
-          </div>
-        ))}
-      </div>
-      <div className="fixed bottom-5 right-10 z-50 flex flex-col items-end gap-2">
-        <div className="bg-white text-black text-[9px] font-black px-4 py-1.5 rounded-full shadow-xl animate-bounce tracking-tighter">
-          WE ARE HERE!
-        </div>
-        <div className="w-16 h-16 bg-[#ec4899] rounded-full flex items-center justify-center shadow-[0_0_40px_rgba(236,72,153,0.4)] cursor-pointer hover:scale-105 transition-transform">
-          <div className="relative">
-            <span className="absolute -top-1 -right-1 w-4 h-4 bg-white text-[10px] text-black font-bold flex items-center justify-center rounded-full">
-              1
-            </span>
-            <FaWhatsapp size={32} color="white" />
-          </div>
-        </div>
-      </div>
+          <div className="fixed left-6 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-4 z-40">
+      {socialLinks.map(({ icon: Icon, url }, i) => (
+        <a
+          key={i}
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-9 h-9 rounded-full bg-black border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-purple-500/30 transition-all"
+        >
+          <Icon size={14} />
+        </a>
+      ))}
+    </div>
+    
+   
     </div>
   );
 };
