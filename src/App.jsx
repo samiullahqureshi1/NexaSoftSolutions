@@ -10,7 +10,7 @@ import Work from "./component/work";
 import CaseStudy from "./component/pages/CaseStudy";
 import Footer from "./component/Footer";
 import BlogsPage from "./component/Blogs";
-import Contact from "./component/pages/contact";
+import Contact from "./component/pages/Contact";
 import ScrollToTop from "./component/ScrollToTop";
 import BlogDetail from "./component/BlogDetail";
 import { FaWhatsapp } from "react-icons/fa";
